@@ -1,0 +1,187 @@
+@import url("reset.css");
+
+/* ==================================
+      ヘッダー
+===================================  */
+.header {
+    background: #013156;
+    width: 100%;
+    height: 80px;
+}
+
+.header__title {
+    line-height: 80px;
+    float: left;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+
+}
+
+.header__link {
+    color: #fff;
+    text-decoration: none;
+	font-family: 'Courgette', cursive;
+	transition: all .7s;
+
+}
+.header__link:hover {
+    color: skyblue;
+	transition: all .7s;
+	transform: scale(1.1);
+}
+
+/* ==================================
+      ナビゲーション
+===================================  */
+
+.nav {
+    /* margin-right: 230px; */
+}
+
+
+.nav__menu {
+    line-height: 80px;
+    list-style: none;
+}
+
+.nav__menu-item  {
+    float: right;
+    margin: 0 10px;
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+	background: #f6f5f4;
+}
+.nav__link:hover {
+    color: white;
+	background: skyblue;
+}
+
+
+/* ==================================
+      レイアウト
+===================================  */
+
+.site-width {
+  width: 980px;
+  margin: 0 auto;
+  /* background: grey;
+  height: 900px; */
+}
+.main-container {
+    overflow: hidden;
+}
+
+#contents {
+    width: 100%;
+    min-height: 600px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+
+#main {
+    width: 760px;
+    float: left;
+}
+
+
+.site-title {
+    text-align: center;
+    margin-bottom: 50px;
+	font-size: 30px;
+}
+
+#main.form-container {
+    margin: auto;
+}
+
+#main.products-container {
+    margin: auto;
+	box-sizing: border-box;
+	/* border: 1px solid black; */
+}
+
+.search-title {
+	width: 100%;
+	height: 40px;
+	background: #eee;
+	margin-bottom: 30px;
+	padding: 5px 15px;
+	line-height: 40px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.list {
+	margin-bottom: 30px;
+}
+
+::placeholder  {
+    opacity: .6;
+}
+
+
+/* ==================================
+      ボタン
+===================================  */
+
+
+.btn {
+	transition: all 0.6s;
+	padding: 15px 40px;
+	font-size: 14px;
+}
+.btn__text {
+	/* padding: 15px 40px;
+	font-size: 14px; */
+}
+
+
+.btn-primary {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid:hover {
+	color: #fff;
+	cursor: pointer;
+	background: #0e3056;
+	transition: all 0.6s;
+	transform: scale(1.1);
+}
+
+
+.fas {
+	font-size: 20px;
+}
+
+.fas:hover {
+	cursor: pointer;
+}
+
+
+/*========================================
+  フッター
+========================================*/
+.footer {
+    background: #013156;
+    width: 100%;
+    color: white;
+    line-height: 80px;
+    text-align: center;
+    box-sizing: border-box;
+}
