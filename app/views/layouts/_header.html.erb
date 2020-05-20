@@ -6,6 +6,7 @@
               <% if logged_in? %>
                 <li class="nav__menu-item"><%= link_to "ログアウト", logout_path , { class: "nav__link btn btn-primary", method: :delete} %></li>
                 <li class="nav__menu-item"><%= link_to "マイページ", user_path(current_user), { class: "nav__link btn btn-primary"} %></li>
+                <li class="nav__menu-item"><%= link_to "ユーザー一覧", users_path, { class: "nav__link btn btn-primary"} %></li>
               <% else %>
                 <li class="nav__menu-item"><%= link_to "ユーザー登録", signup_path , { class: "nav__link btn btn-primary"} %></li>
                 <li class="nav__menu-item"><%= link_to "ログイン",  login_path, { class: "nav__link btn btn-primary"} %></li>
