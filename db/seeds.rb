@@ -31,3 +31,12 @@ User.first.posts.create!(title: '2012MLB10　ダルビッシュVSイチロー2�
 
 User.second.posts.create!(title: '「常識人間」は成功しない',
                         youtube_url: 'L99WnfYCeXg')
+
+
+# リレーションシップ
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
