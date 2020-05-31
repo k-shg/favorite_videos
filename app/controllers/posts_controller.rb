@@ -22,10 +22,7 @@ class PostsController < ApplicationController
 
  def show
    @post = Post.find(params[:id])
- end
-
- def like
-
+   @like = Like.new
  end
 
  def destroy
