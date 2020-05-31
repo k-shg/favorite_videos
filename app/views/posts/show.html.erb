@@ -5,3 +5,17 @@
   frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
+
+
+<% if logged_in? %>
+  <h3>いいね件数: <%= @post.likes.count %></h3>
+  <% if current_user.already_liked?(@post) %>
+    <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
+  <% else %>
+    <%= button_to 'いいね', post_likes_path(@post) %>
+  <% end %>
+  <h2>いいねしたユーザー</h2>
+  <% @post.liked_users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+<% end %>
