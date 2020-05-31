@@ -18,3 +18,16 @@ User.create!(name:  "bbb",
                password:              password,
                password_confirmation: password)
 end
+
+User.first.posts.create!(title: 'Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube',
+                        youtube_url: 'rMurJ6SxuHs')
+
+User.first.posts.create!(title: 'Home Bossa: Happy Bossa Nova & Morning Jazz Coffee Music for Good Mood and Wake Up',
+                        youtube_url: '3N0K0_9cvcg')
+
+User.first.posts.create!(title: '2012MLB10　ダルビッシュVSイチロー2度目の対決',
+                        youtube_url: 'e57zbXC4Y5k')
+
+
+User.second.posts.create!(title: '「常識人間」は成功しない',
+                        youtube_url: 'L99WnfYCeXg')
