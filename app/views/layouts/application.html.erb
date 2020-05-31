@@ -17,3 +17,16 @@
     </div>
   </body>
 </html>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.js"></script>
+<script>
+  $('.youtube').click(function(){
+    video = '<iframe id="aaa" src="'+ $(this).attr('data-video') +'" frameborder="0" width="320" height="180"></iframe>';
+    $(this).replaceWith(video);
+
+    setTimeout(function(){
+      $('.ytp-large-play-button').click()
+      console.log(1323);
+    },2000);
+  });
+</script>

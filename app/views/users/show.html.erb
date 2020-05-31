@@ -6,4 +6,12 @@
 </p>
 
 
+  <% if @user.posts.any? %>
+    <h3>posts (<%= @user.posts.count %>)</h3>
+    <ol class="posts">
+      <%= render @posts %>
+    </ol>
+    <%= will_paginate @posts %>
+  <% end %>
+
 <%= link_to 'プロフィール編集', edit_user_path %>
