@@ -5,8 +5,6 @@ class PostsController < ApplicationController
    @post.youtube_url = params[:post][:youtube_url].last(11)
 
    result = find_videos('snippet', @post.youtube_url)
-
-   puts result.to_h
    title = result.items.first.snippet.title
 
    @post.title = title
@@ -23,6 +21,8 @@ class PostsController < ApplicationController
  def show
    @post = Post.find(params[:id])
    @like = Like.new
+   @comments = @post.comments
+   @comment = Comment.new
  end
 
  def destroy
