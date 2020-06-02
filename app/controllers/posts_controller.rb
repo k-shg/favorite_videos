@@ -5,9 +5,12 @@ class PostsController < ApplicationController
    @post.youtube_url = params[:post][:youtube_url].last(11)
 
    result = find_videos('snippet', @post.youtube_url)
-   title = result.items.first.snippet.title
 
-   @post.title = title
+
+   if result.items.present?
+     title = result.items.first.snippet.title
+     @post.title = title
+   end
 
    if @post.save
      flash[:success] = "post created!"
@@ -29,11 +32,14 @@ class PostsController < ApplicationController
  end
 
  def search
+
    if logged_in?
      @post  = current_user.posts.build
    end
+
    @search_word = params[:search]
    @feed_items = Post.search(params[:search]).paginate(page: params[:page])
+
    render 'static_pages/home'
  end
 
