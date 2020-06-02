@@ -28,6 +28,15 @@ class PostsController < ApplicationController
  def destroy
  end
 
+ def search
+   if logged_in?
+     @post  = current_user.posts.build
+   end
+   @search_word = params[:search]
+   @feed_items = Post.search(params[:search]).paginate(page: params[:page])
+   render 'static_pages/home'
+ end
+
  private
 
    def post_params
