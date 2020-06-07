@@ -10,12 +10,28 @@
 
 <%= render 'follow_form' if logged_in? %>
 
-  <% if @user.posts.any? %>
-    <h3>posts (<%= @user.posts.count %>)</h3>
-    <ol class="posts">
-      <%= render @posts %>
-    </ol>
-    <%= will_paginate @posts %>
-  <% end %>
 
-<%= link_to 'プロフィール編集', edit_user_path %>
+<h1 class="site-title">マイページ</h1>
+
+    <section id="main" class="products-container">
+        <div class="list panel-list">
+            <h2 class="horizon-container">
+                <span class="title">登録動画一覧（<%= @user.posts.count %>個）</span>
+            </h2>
+            <% if @user.posts.any? %>
+                <%= render @posts %>
+              <%= will_paginate @posts %>
+            <% end %>
+        </div>
+        <div class="list panel-list">
+            <h2 class="horizon-container">
+                <span class="title">お気に入り動画一覧</span>
+            </h2>
+            <% if @favorite_posts.any? %>
+                <%= render @favorite_posts %>
+              <%= will_paginate @favorite_posts %>
+            <% end %>
+        </div>
+    </section>
+
+    <%= render 'layouts/sidebar' %>

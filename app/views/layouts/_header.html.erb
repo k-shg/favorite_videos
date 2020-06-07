@@ -1,12 +1,12 @@
 <header class="header">
     <div class="site-width">
-        <h1 class="header__title"><%= link_to "my tube", root_path, { class: "header__link"} %></h1>
+        <h1 class="header__title"><%= link_to "Favorite Videos", root_path, { class: "header__link"} %></h1>
         <nav id="nav-top" class="nav">
             <ul class="nav__menu">
               <% if logged_in? %>
                 <li class="nav__menu-item"><%= link_to "ログアウト", logout_path , { class: "nav__link btn btn-primary", method: :delete} %></li>
                 <li class="nav__menu-item"><%= link_to "マイページ", user_path(current_user), { class: "nav__link btn btn-primary"} %></li>
-                <li class="nav__menu-item"><%= link_to "ユーザー一覧", users_path, { class: "nav__link btn btn-primary"} %></li>
+
               <% else %>
                 <li class="nav__menu-item"><%= link_to "ユーザー登録", signup_path , { class: "nav__link btn btn-primary"} %></li>
                 <li class="nav__menu-item"><%= link_to "ログイン",  login_path, { class: "nav__link btn btn-primary"} %></li>

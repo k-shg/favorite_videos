@@ -45,12 +45,11 @@ $gray-lighter: gray;
 }
 
 .header__title {
-    line-height: 80px;
-    float: left;
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0;
-
+  line-height: 80px;
+  float: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
 }
 
 .header__link {
@@ -135,7 +134,7 @@ $gray-lighter: gray;
     margin: auto;
 }
 
-#main.products-container {
+#main.feed-container {
     margin: auto;
 	box-sizing: border-box;
 	/* border: 1px solid black; */
@@ -183,51 +182,32 @@ $gray-lighter: gray;
 
 
 /* ==================================
-      ボタン
+      ページネーション
 ===================================  */
 
-
-.btn {
-	transition: all 0.6s;
-	padding: 15px 40px;
-	font-size: 14px;
-}
-.btn__text {
-	/* padding: 15px 40px;
-	font-size: 14px; */
-}
-
-
-.btn-primary {
-	-webkit-appearance: none;
-    color: rgb(0, 0, 0);
-    background: #fff;
-	transition: all 0.6s;
+.search-title {
+	width: 100%;
+	height: 40px;
+	background: #eee;
+	margin-bottom: 30px;
+	padding: 5px 15px;
+	line-height: 40px;
+	box-sizing: border-box;
+	overflow: hidden;
 }
 
-.btn-mid {
-	-webkit-appearance: none;
-    color: rgb(0, 0, 0);
-    background: #fff;
-	transition: all 0.6s;
+.search-left {
+	float: left;
+}
+.search-left .total-num {
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 5px;
+}
+.search-right {
+	float: right;
 }
 
-.btn-mid:hover {
-	color: #fff;
-	cursor: pointer;
-	background: #0e3056;
-	transition: all 0.6s;
-	transform: scale(1.1);
-}
-
-
-.fas {
-	font-size: 20px;
-}
-
-.fas:hover {
-	cursor: pointer;
-}
 
 
 /*========================================
@@ -242,18 +222,6 @@ $gray-lighter: gray;
     box-sizing: border-box;
 }
 
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
 
 /*========================================
   フォーム
@@ -287,17 +255,16 @@ input {
 	background: #fff;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+.form__name, .form__email, .form__pass, .form__repass,
 .select, form textarea {
-    display: block;
-    width: 100%;
-    height: 60px;
-    font-size: 18px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    border: none;
+  line-height: 40px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border: none;
 	border-radius: 5px;
 }
 
@@ -315,7 +282,9 @@ input[type="password"],
   }
 }
 
-/* Users index */
+/*========================================
+  ユーザー一覧
+========================================*/
 
 .users {
   list-style: none;
@@ -383,4 +352,341 @@ input[type="password"],
   strong {
     display: block;
   }
+}
+
+
+/* ==================================
+      パネル
+===================================  */
+
+
+.panel-list {
+	overflow: hidden;
+}
+
+.panel {
+	float: left;
+	width: 25%;
+	color: #013156;
+	text-decoration: none;
+	margin: 10px;
+  margin-bottom: 60px;
+	position: relative;
+}
+
+.panel-index {
+	width: 30%;
+
+}
+
+
+.panel__head {
+	width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.panel__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.panel__price {
+	margin-top: 10px;
+}
+
+.panel-container {
+	position: relative;
+	width: 100%;
+}
+
+.panel-cover {
+	position: absolute;
+  width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	transform: scale(1.1);
+	transition: all .4s;
+	opacity: 0;
+	text-align: center;
+
+
+}
+
+.panel-cover:hover {
+	position: absolute;
+  width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	opacity: .7;
+	transform: scale(1.0);
+	transition: all .4s;
+}
+
+.panel__icon-link {
+	position: relative;
+	top: 45%;
+	color: #fff;
+	font-size: 50px;
+}
+
+
+
+/* ==================================
+      ボタン
+===================================  */
+
+
+.btn {
+	transition: all 0.6s;
+	padding: 10px 30px;
+	font-size: 14px;
+}
+
+
+.btn-primary {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid:hover {
+	color: #fff;
+	cursor: pointer;
+	background: #0e3056;
+	transition: all 0.6s;
+	transform: scale(1.1);
+}
+
+
+.fas {
+	font-size: 20px;
+}
+
+.fas:hover {
+	cursor: pointer;
+}
+
+
+/*========================================
+  検索エリア
+========================================*/
+
+#search {
+
+}
+
+.search__form {
+	padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+
+.search__select-box {
+	float: left;
+	margin-right: 20px;
+}
+.search__select-box:first-child {
+	width: 30%;
+}
+
+.search__input {
+	width: 100%;
+	border: 1px solid #c6c6c6;
+	height: 40px;
+	font-size: 18px;
+    box-sizing: border-box;
+	padding: 10px;
+}
+.search__select {
+	margin-bottom: 0;
+	padding: 10px;
+	font-size: 14px;
+	display: inline-block;
+    height: 40px;
+	border: 1px solid #c6c6c6;
+	width: 150px;
+	background: #fff;
+}
+
+.search__button {
+	-webkit-appearance: none;
+	height: 40px;
+	transition: all .6s;
+}
+
+.search__button:hover {
+	cursor: pointer;
+	transform: translate(0, -5px);
+	background: #0e3056;
+	/* transform: scale(1.2); */
+	transition: all .6s;
+	color: #fff;
+}
+
+
+.search__button-title{
+	padding: 0 10px;
+	font-size: 15px;
+}
+
+
+
+.form__input-num {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: none;
+    display: block;
+}
+
+
+.form__select {
+    background: #fff;
+}
+.form__submit {
+    float: right;
+    margin: 10px 0;
+}
+
+form .area-msg {
+    color: red;
+    margin-bottom: 15px;
+}
+
+
+.header__box__content {
+    width: 800px;
+    justify-content: space-between;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.box-center {
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* ==================================
+      サイドバー
+===================================  */
+
+.sidebar-container {
+    width: 200px;
+    background: #f6f5f4;
+    float: right;
+    min-height: 500px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+	transition: all .7s;
+}
+
+.sidebar__btn {
+	display: block;
+	margin-bottom: 10px;
+	width: 100%;
+	-webkit-appearance: none;
+	background: #f6f5f4;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.sidebar__btn:hover {
+	background: #0e3056;
+}
+
+
+.sidebar__link {
+	text-decoration: none;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 15px;
+
+}
+.sidebar__link:hover {
+	color: #fff;
+	transform: scale(1.1);
+}
+
+
+
+/*========================================
+ 	utility
+========================================*/
+
+.error {
+	background: #f7dcd9;
+}
+input[type="text"].error,
+input[type="number"].error,
+input[type="file"].error {
+    background: #f7dcd9;
+}
+
+.horizon-container {
+  margin-top: 40px;
+	margin-bottom: 20px;
+}
+
+.horizon-container .title{
+	padding: 5px 10px;
+	font-size: 25px;
+	margin-bottom: 10px;
+	display: inline-block;
+
+}
+
+.horizon-container::after{
+	content: '';
+	border-top: 1px solid #cccccc;
+	display: block;
+	top: 10px;
+}
+
+.required {
+    background: #fe8a8b;
+    color: white;
+    padding: 7px 5px;
+	margin: 0 7px;
+    font-size: 14px;
+	border-radius: 50px;
+}
+
+.flash-msg {
+	position: fixed;
+	display: none;
+	background: #4caf50;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 100%;
+	opacity: .8;
 }

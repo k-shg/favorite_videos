@@ -1,18 +1,51 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
 <% if logged_in? %>
   <section class="post_form">
     <%= render 'shared/post_form' %>
   </section>
-  <p>検索</p>
-  <%= form_tag(search_path, method: :get) do %>
-    <%= text_field_tag :search, @search_word %>
-    <%= submit_tag 'Search', name: :nil %>
-  <% end %>
 <% end %>
 
 
-<div class="feed">
-  <h3>post Feed</h3>
-  <%= render 'shared/feed' %>
+<div id="search">
+  <%= form_tag(search_path, method: :get, class: "form search__form", enforce_utf8: false) do %>
+        <div class="search__select-box">
+          <%= text_field_tag :search, @search_word, placeholder: "検索", class: "search__input" %>
+        </div>
+        <div class="search__select-box">
+            カテゴリー：
+            <select name="category_id" class="search__select">
+                <option class="search__item" value="0">選択してください<span class="icon-select"></span></option>
+                <option value="">エンタメ</option>
+                <option value="">ビジネス</option>
+                <option value="">アニメ</option>
+            </select>
+        </div>
+        <div class="search__select-box">
+            表示順：
+            <select name="order" class="search__select">
+                <option class="search__item" value="0" selected>選択してください</option>
+                <option class="search__item" value="1">いいねが多い順</option>
+                <option class="search__item" value="2">いいねが少ない順</option>
+            </select>
+        </div>
+      <%= button_to 'Search', class: "search__button" do %>
+        <i class="fas fa-search-plus"></i>
+        <span class="search__button-title">検索</span>
+      <% end %>
+  <% end %>
 </div>
+<div class="horizon-container"></div>
+
+<section class="feed-container">
+  <h3>post Feed</h3>
+  <div class="search-title">
+      <div class="search-left"></div>
+          <span class="total-num"><%= @feed_items.count %></span>件の商品が見つかりました
+      <div class="search-right">
+          <span class="num"><%= @feed_items.offset + 1 %></span>-
+          <!-- 合計商品数が表示数よりが少ない場合、合計商品数を表示する -->
+          <span class="num"><%= @feed_items.count > @feed_items.per_page ? @feed_items.per_page + @feed_items.offset : @feed_items.count; %></span>件/
+          <spna class="num"><%= @feed_items.count %></spna>件中
+      </div>
+  </div>
+  <%= render 'shared/feed' %>
+</section>

@@ -1,8 +1,11 @@
-<li id="post-<%= post.id %>">
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content"><%= post.title %></span>
-  <%= link_to image_tag("https://img.youtube.com/vi/#{post.youtube_url}/mqdefault.jpg", width: '320'), post_path(post)%>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
-  </span>
-</li>
+<%= link_to post_path(post), { class: "panel panel-index" } do %>
+  <div class="panel__head">
+    <%= image_tag("https://img.youtube.com/vi/#{post.youtube_url}/mqdefault.jpg", class: "panel__img") %>
+    <div class="panel-cover">
+        <i class="fas fa-link panel__icon-link"></i>
+    </div>
+  </div>
+  <div class="panel__body">
+      <%= post.title %>
+  </div>
+<% end %>
