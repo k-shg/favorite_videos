@@ -1,0 +1,19 @@
+<section id="sidebar" class="info-container">
+  <div class="sidebar__user-name">
+    <%= @user.name %>
+  </div>
+  <div class="box">
+  <% if @user.image? %>
+     <%= image_tag @user.image.thumb.url %>
+  <% else %>
+     <%= image_tag "/assets/default.png", size: '100x100' %>
+  <% end %>
+    </div>
+
+  <section class="stats">
+       <%= render 'shared/stats' %>
+  </section>
+    <div class="box">
+  <%= render 'follow_form' if logged_in? %>
+    </div>
+</section>

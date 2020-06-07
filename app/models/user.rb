@@ -19,6 +19,8 @@ class User < ApplicationRecord
               uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  mount_uploader :image, ImageUploader
+  validate  :image_size
 
 
   # 渡された文字列のハッシュ値を返す
@@ -53,6 +55,13 @@ class User < ApplicationRecord
  end
 
     private
+
+    # アップロードされた画像のサイズをバリデーションする
+      def image_size
+        if image.size > 5.megabytes
+          errors.add(:image, "should be less than 5MB")
+        end
+      end
 
       def downcase_email
         email.downcase!

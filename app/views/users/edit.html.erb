@@ -1,24 +1,42 @@
-<main id="contents" class="site-width">
-    <div class="form-container">
-      <h1>Update your profile</h1>
-        <div class="row">
-          <%= form_for(@user, html: { class: "form" }) do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>
 
-            <%= f.label :name %>
-            <%= f.text_field :name, class: 'form-control' %>
+<h1 class="site-title">プロフィール編集</h1>
+<section id="main" class="form-container">
+  <%= form_for(@user, html: { class: "form" }, multipart: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-            <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control' %>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class: "form__name" %>
 
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form__email" %>
 
-            <%= f.label :password_confirmation, "Confirmation" %>
-            <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, class:" form__pass" %>
 
-            <%= f.submit "Save changes", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-</main>
+    <%= f.label :password_confirmation, "パスワード(再入力)" %>
+    <%= f.password_field :password_confirmation, class: "form__repass" %>
+
+    <% if @user.image? %>
+       <%= image_tag @user.image.url %>
+    <% else %>
+       <%= image_tag "/assets/default.png", size: '400x400' %>
+    <% end %>
+
+    <button type="button" class="btn btn-outline-secondary rounded-pill">
+       <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+    </button>
+
+    <%= f.submit "変更する", class: "form__submit" %>
+
+  <% end %>
+</section><%= render 'layouts/sidebar' %>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+<script type="text/javascript">
+  $('#user_image').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
