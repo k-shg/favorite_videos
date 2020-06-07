@@ -5,17 +5,22 @@
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
   </head>
   <body>
     <% flash.each do |message_type, message| %>
       <%= message %>
     <% end %>
     <%= render 'layouts/header' %>
-    <div class="container">
+    <main id="contents">
+      <div class="main-container site-width">
       <%= yield %>
-      <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
-    </div>
+      </div>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
 
