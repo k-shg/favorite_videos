@@ -1,21 +1,44 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>posts:</b> <%= @user.posts.count %></span>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
-    <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
-      <%= will_paginate %>
-    <% end %>
-  </div>
+<div id="search">
+  <%= form_tag(search_users_path, method: :get, class: "form search__form", enforce_utf8: false) do %>
+        <div class="search__select-box">
+          <%= text_field_tag :search, @search_word, placeholder: "検索", class: "search__input" %>
+        </div>
+        <div class="search__select-box">
+            カテゴリー：
+            <select name="category_id" class="search__select">
+                <option class="search__item" value="0">選択してください<span class="icon-select"></span></option>
+                <option value="">エンタメ</option>
+                <option value="">ビジネス</option>
+                <option value="">アニメ</option>
+            </select>
+        </div>
+        <div class="search__select-box">
+            表示順：
+            <select name="order" class="search__select">
+                <option class="search__item" value="0" selected>選択してください</option>
+                <option class="search__item" value="1">いいねが多い順</option>
+                <option class="search__item" value="2">いいねが少ない順</option>
+            </select>
+        </div>
+      <%= button_to 'Search', class: "search__button" do %>
+        <i class="fas fa-search-plus"></i>
+        <span class="search__button-title">検索</span>
+      <% end %>
+  <% end %>
 </div>
+<div class="horizon-container"></div>
+
+<section class="user-container">
+  <div class="search-title">
+      <div class="search-left"></div>
+          <span class="total-num"><%= @users.count %></span>人のユーザーが見つかりました
+      <div class="search-right">
+          <span class="num"><%= @users.offset + 1 %></span>-
+          <!-- 合計ユーザー数が表示数よりが少ない場合、合計ユーザー数を表示する -->
+          <span class="num"><%= @users.count > @users.per_page ? @users.per_page + @users.offset : @users.count; %></span>人/
+          <spna class="num"><%= @users.count %></spna>人中
+      </div>
+  </div>
+  <%= render @users %>
+</section>
+<%= will_paginate %>

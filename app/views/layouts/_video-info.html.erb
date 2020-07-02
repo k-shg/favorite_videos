@@ -1,0 +1,28 @@
+<section id="sidebar" class="video-info-container">
+  <% if logged_in? %>
+    <div class="like-edit">
+      <% if current_user.already_liked?(@post) %>
+        <%= button_to 'UNLIKE', post_like_path(@post), method: :delete, class: "btn" %>
+      <% else %>
+        <%= button_to 'LIKE', post_likes_path(@post), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="like-count">
+    <%= @post.likes.count %>いいね
+  </div>
+
+  <div class="liked-users">
+    <div class="user">
+      <% @post.liked_users.each do |user| %>
+        <%= link_to user_path(user) do %>
+            <% if user.image? %>
+               <%= image_tag user.image.thumb_liked.url %>
+            <% else %>
+               <%= image_tag "/assets/default.png", size: '30x30' %>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

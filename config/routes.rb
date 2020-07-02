@@ -10,11 +10,16 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+    collection do
+      get :search
+    end
   end
   resources :posts, only: [:index, :show, :create] do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
+    collection do
+      get :search
+    end
   end
-  get 'search',    to: 'posts#search'
   resources :relationships,       only: [:create, :destroy]
 end

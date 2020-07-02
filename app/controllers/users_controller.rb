@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 20)
   end
 
   def new
@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if logged_in?
+      @post  = current_user.posts.build
+    end
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
     @favorite_posts = @user.liked_posts.paginate(page: params[:page])
@@ -61,6 +64,18 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def search
+
+    # if logged_in?
+    #   @post  = current_user.posts.build
+    # end
+
+    @search_word = params[:search]
+    @users = User.search(params[:search]).paginate(page: params[:page])
+
+    render 'users/index'
   end
 
   private

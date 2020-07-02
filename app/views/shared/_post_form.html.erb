@@ -1,7 +1,17 @@
-<%= form_for(@post) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :youtube_url, placeholder: "Compose new post..." %>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+<div id="post">
+  <%= form_for @post,  html: { method: "post", class: "form post__form", enforce_utf8: false } do |f| %>
+    <div class="post__select-box">
+      <%= f.text_field :youtube_url, placeholder: "Youtube動画URLを入力", class: "post__input" %>
+    </div>
+    <div class="post__select-box">
+        カテゴリー：
+        <select name="category_id" class="post__select">
+            <option class="post__item" value="0">選択してください<span class="icon-select"></span></option>
+            <option value="">エンタメ</option>
+            <option value="">ビジネス</option>
+            <option value="">アニメ</option>
+        </select>
+    </div>
+    <%= f.submit "Post", class: "post__button" %>
+  <% end %>
+</div>

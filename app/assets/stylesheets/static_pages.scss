@@ -1,3 +1,176 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$gray-medium-light: #eaeaea;
+$state-danger-text: red;
+$gray-lighter: gray;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* ==================================
+      ボタン
+===================================  */
+
+
+.btn {
+	transition: all 0.6s;
+	padding: 10px 30px;
+	font-size: 14px;
+	border: 2px #767676 solid;
+}
+
+
+.btn-primary {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid {
+	-webkit-appearance: none;
+    color: rgb(0, 0, 0);
+    background: #fff;
+	transition: all 0.6s;
+}
+
+.btn-mid:hover {
+	color: #fff;
+	cursor: pointer;
+	background: #0e3056;
+	transition: all 0.6s;
+	transform: scale(1.1);
+}
+
+
+.fas {
+	font-size: 20px;
+}
+
+.fas:hover {
+	cursor: pointer;
+}
+
+.unlike:hover {
+	background: #efefef;
+	color: black;
+}
+
+
+/* ==================================
+      サイドバー
+===================================  */
+
+.sidebar-container {
+    width: 200px;
+    background: #f6f5f4;
+    float: right;
+    min-height: 500px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+	transition: all .7s;
+}
+
+.sidebar__btn {
+	display: block;
+	margin-bottom: 10px;
+	width: 100%;
+	-webkit-appearance: none;
+	background: #f6f5f4;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.sidebar__btn:hover {
+	background: #0e3056;
+}
+
+
+.sidebar__link {
+	text-decoration: none;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 15px;
+
+}
+.sidebar__link:hover {
+	color: #fff;
+	transform: scale(1.1);
+}
+
+
+/* ==================================
+      ユーザー情報
+===================================  */
+.info-container {
+    width: 200px;
+    background: #f6f5f4;
+    float: right;
+    min-height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.sidebar__user-name {
+  width: 200px;
+  text-align: center;
+}
+
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+
+.liked-users {
+	margin-bottom: 25px;
+}
+
+/*========================================
+ 	動画情報
+========================================*/
+.video-info-container {
+    width: 200px;
+    background: #f6f5f4;
+    float: right;
+    min-height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.like-count{
+  margin: 13px;
+}

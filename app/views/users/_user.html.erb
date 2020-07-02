@@ -1,3 +1,15 @@
-<li>
-  <%= link_to user.name, user %>
-</li>
+<%= link_to user_path(user), { class: "user-panel user-panel-index" } do %>
+  <div class="user-panel__head">
+    <% if user.image? %>
+       <%= image_tag user.image.thumb.url, class: "user-panel__img" %>
+    <% else %>
+       <%= image_tag "/assets/default.png", size: '100x100', class: "user-panel__img"  %>
+    <% end %>
+    <div class="user-panel-cover">
+        <i class="fas fa-link user-panel__icon-link"></i>
+    </div>
+  </div>
+  <div class="user-panel__body">
+      <%= user.name %>
+  </div>
+<% end %>

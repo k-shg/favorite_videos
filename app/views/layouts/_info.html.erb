@@ -14,6 +14,6 @@
        <%= render 'shared/stats' %>
   </section>
     <div class="box">
-  <%= render 'follow_form' if logged_in? %>
+      <%= render 'follow_form' if logged_in? && !current_user?(@user) %>
     </div>
 </section>
