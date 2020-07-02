@@ -1,3 +1,222 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*========================================
+　　投稿エリア
+========================================*/
+
+.post-title {
+	width: 100%;
+	height: 40px;
+	background: #eee;
+	margin-bottom: 30px;
+	padding: 5px 15px;
+	line-height: 40px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.post-left {
+	float: left;
+}
+.post-left .total-num {
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 5px;
+}
+.post-right {
+	float: right;
+}
+
+.post__form {
+	padding: 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+
+.post__select-box {
+	float: left;
+	margin-right: 20px;
+}
+.post__select-box:first-child {
+	width: 60%;
+}
+
+.post__input {
+ width: 600px;
+	border: 1px solid #c6c6c6;
+	height: 40px;
+	font-size: 18px;
+    box-sizing: border-box;
+	padding: 10px;
+}
+.post__select {
+	margin-bottom: 0;
+	padding: 10px;
+	font-size: 14px;
+	display: inline-block;
+    height: 40px;
+	border: 1px solid #c6c6c6;
+	width: 150px;
+	background: #fff;
+}
+
+.post__button {
+	-webkit-appearance: none;
+	height: 40px;
+	transition: all .6s;
+}
+
+.post__button:hover {
+	cursor: pointer;
+	transform: translate(0, -5px);
+	background: #0e3056;
+	/* transform: scale(1.2); */
+	transition: all .6s;
+	color: #fff;
+}
+
+
+.post__button-title{
+	padding: 0 10px;
+	font-size: 15px;
+}
+
+
+
+.form__input-num {
+    width: 180px;
+    height: 60px;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: none;
+    display: block;
+}
+
+
+.form__select {
+    background: #fff;
+}
+.form__submit {
+    float: right;
+    margin: 10px 0;
+}
+
+form .area-msg {
+    color: red;
+    margin-bottom: 15px;
+}
+
+
+/*========================================
+  商品詳細レイアウト あとで修正必要
+========================================*/
+
+.product {
+
+}
+.product__category {
+    background: #7acee6;
+    color: white;
+    padding: 2px 6px;
+    margin: 0 3px;
+    font-size: 25px;
+}
+.product__name {
+	font-size: 25px;
+}
+
+.product__img-container {
+	padding: 10px;
+	// margin: 0 auto;
+	// margin-top: 50px;
+	// width: 60%;
+}
+.product__img {
+	display: block;
+	width: 100%;
+	/* max-height: 600px;
+	object-fit: cover; */
+
+}
+
+.product-comment {
+	padding: 10px;
+	background: #f6f5f4;
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 20px 0;
+	box-sizing: border-box;
+}
+p.comment {
+	margin-top: 30px;
+}
+
+.product-buy {
+	float: left;
+	width: 100%;
+	line-height: 52px;
+}
+
+
+.product-buy__item-left {
+	font-size: 18px;
+	display: block;
+	float: left;
+}
+
+.product-buy__item-right {
+	font-size: 25px;
+	display: block;
+	float: right;
+	margin-right: 50px;
+}
+.product-buy__btn {
+    font-size: 18px;
+}
+
+.product-buy__btn:hover {
+    background: #ff5722;
+	transform: scale(1.2);
+}
+
+
+.review {
+	display: flex;
+ justify-content: space-between;
+	align-items: center;
+}
+
+.review__name-icon {
+	margin-left: 40px;
+}
+
+
+.omment-container { 
+	width: 70%;
+	background: white;
+	min-height: 30px;
+}
+
+
+.review__comment-container {
+	padding: 5px;
+	overflow: hidden;
+	width: 700px;
+	margin: 20px;
+	border: 2px #999 solid;
+	background-color: #f7f7f7;
+}
+
+.review__comment {
+	word-wrap: break-word;
+	padding: 10px;
+	color: #000;
+	font-size: 14px;
+	box-sizing: border-box;
+}

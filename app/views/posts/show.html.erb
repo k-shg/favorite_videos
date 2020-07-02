@@ -1,41 +1,54 @@
-<iframe
-  width="640"
-  height="360"
-  src="https://www.youtube.com/embed/<%= @post.youtube_url%>"
-  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
 
-
-<% if logged_in? %>
-  <h3>いいね件数: <%= @post.likes.count %></h3>
-  <h3>コメント件数: <%= @post.comments.count %></h3>
-  <% if current_user.already_liked?(@post) %>
-    <%= button_to 'いいねを取り消す', post_like_path(@post), method: :delete %>
-  <% else %>
-    <%= button_to 'いいね', post_likes_path(@post) %>
-  <% end %>
-  <h2>いいねしたユーザー</h2>
-  <% @post.liked_users.each do |user| %>
-    <li><%= user.email %></li>
-  <% end %>
-
-
-  <h2>コメント一覧</h2>
-  <% @comments.each do |c| %>
-    <div>
-      <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-      <%= c.content %>
-      <hr>
+<h1 class="site-title"><%= @post.title %></h1>
+<section id="main" class="product">
+    <span class="product__category"><?php echo $dbFormData['category_name'] ?></span>
+    <div class="product__img-container">
+        <iframe
+          class="product__img"
+          width="640"
+          height="360"
+          src="https://www.youtube.com/embed/<%= @post.youtube_url %>"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
     </div>
-  <% end %>
+</section>
+<%= render 'layouts/video-info' %>
+<% if logged_in? %>
 
-  <%= form_for [@post, @comment] do |f| %>
-    <%= f.text_field :content %>
+  <%= form_for [@post, @comment], html: { class: "form-review" } do |f| %>
+    <%= f.text_area :content, class: "form-review__content" %>
     <%= f.hidden_field :post_id, value: @post.id %>
     <br>
-    <%= f.submit 'コメントする' %>
+    <%= f.submit 'レビューする', class: "btn btn-mid" %>
   <% end %>
-
-
 <% end %>
+
+<section class="product-comment">
+  <div class="product-comment-container">
+    <div style="text-align:center;">レビュー一覧(<%= @post.comments.count %>レビュー)</div>
+    <div class="review-count">
+    </div>
+      <% @comments.each do |c| %>
+        <div class="review">
+          <div class="review__name-icon">
+            <div>
+              <%= c.user.name %>
+            </div>
+            <div>
+              <% if c.user.image? %>
+                 <%= image_tag c.user.image.thumb.url, size: '50x50' %>
+              <% else %>
+                 <%= image_tag "/assets/default.png", size: '50x50' %>
+              <% end %>
+            </div>
+          </div>
+          <div class="review__comment-container">
+            <div class="review__comment">
+              <%= c.content %>
+            </div>
+          </div>
+      </div>
+    <% end %>
+  </div>
+</section>

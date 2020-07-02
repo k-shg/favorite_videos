@@ -1,3 +1,4 @@
+@import "bootstrap";
 @import url("reset.css");
 
 /* mixins, variables, etc. */
@@ -185,30 +186,24 @@ $gray-lighter: gray;
       ページネーション
 ===================================  */
 
-.search-title {
-	width: 100%;
-	height: 40px;
-	background: #eee;
-	margin-bottom: 30px;
-	padding: 5px 15px;
-	line-height: 40px;
-	box-sizing: border-box;
-	overflow: hidden;
-}
-
-.search-left {
-	float: left;
-}
-.search-left .total-num {
-	font-size: 16px;
-	font-weight: bold;
-	padding-right: 5px;
-}
-.search-right {
-	float: right;
-}
 
 
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
 
 /*========================================
   フッター
@@ -263,13 +258,13 @@ $gray-lighter: gray;
     height: 60px;
     font-size: 18px;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     border: none;
 	border-radius: 5px;
 }
 
 .form__name, .form__email, .form__pass, .form__repass,
-.select, form textarea {
+.select,  {
   line-height: 40px;
   display: block;
   width: 100%;
@@ -293,50 +288,6 @@ $gray-lighter: gray;
   .form-control {
     color: $state-danger-text;
   }
-}
-
-/*========================================
-  ユーザー一覧
-========================================*/
-
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-
-.youtube {
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-	width: 320px;
-	height: 180px;
-}
-.youtube::before {
-	position: absolute;
-	content: "";
-	color: #fff;
-	text-align: center;
-	font-size: 22px;
-	font-weight: bold;
-	line-height: 180px;
-	background: rgba(0, 0, 0, 0.0);
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 10;
-	transition: all 0.1s;
-}
-.youtube:hover::before {
-	background: rgba(0, 0, 0, 0.5);
-	cursor: pointer;
-	transition: all 0.3s;
 }
 
 
@@ -428,56 +379,34 @@ $gray-lighter: gray;
 
 
 
-/* ==================================
-      ボタン
-===================================  */
 
-
-.btn {
-	transition: all 0.6s;
-	padding: 10px 30px;
-	font-size: 14px;
-}
-
-
-.btn-primary {
-	-webkit-appearance: none;
-    color: rgb(0, 0, 0);
-    background: #fff;
-	transition: all 0.6s;
-}
-
-.btn-mid {
-	-webkit-appearance: none;
-    color: rgb(0, 0, 0);
-    background: #fff;
-	transition: all 0.6s;
-}
-
-.btn-mid:hover {
-	color: #fff;
-	cursor: pointer;
-	background: #0e3056;
-	transition: all 0.6s;
-	transform: scale(1.1);
-}
-
-
-.fas {
-	font-size: 20px;
-}
-
-.fas:hover {
-	cursor: pointer;
-}
 
 
 /*========================================
   検索エリア
 ========================================*/
 
-#search {
+.search-title {
+	width: 100%;
+	height: 40px;
+	background: #eee;
+	margin-bottom: 30px;
+	padding: 5px 15px;
+	line-height: 40px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
 
+.search-left {
+	float: left;
+}
+.search-left .total-num {
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 5px;
+}
+.search-right {
+	float: right;
 }
 
 .search__form {
@@ -562,114 +491,6 @@ form .area-msg {
 }
 
 
-.header__box__content {
-    width: 800px;
-    justify-content: space-between;
-}
-
-.display-flex {
-    display: flex;
-}
-
-.box-center {
-    margin: 0 auto;
-}
-
-.text-center {
-    text-align: center;
-}
-
-
-/* ==================================
-      サイドバー
-===================================  */
-
-.sidebar-container {
-    width: 200px;
-    background: #f6f5f4;
-    float: right;
-    min-height: 500px;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-.sidebar {
-	transition: all .7s;
-}
-
-.sidebar__btn {
-	display: block;
-	margin-bottom: 10px;
-	width: 100%;
-	-webkit-appearance: none;
-	background: #f6f5f4;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-.sidebar__btn:hover {
-	background: #0e3056;
-}
-
-
-.sidebar__link {
-	text-decoration: none;
-	display: block;
-	height: 50px;
-	line-height: 50px;
-	font-size: 15px;
-
-}
-.sidebar__link:hover {
-	color: #fff;
-	transform: scale(1.1);
-}
-
-
-/* ==================================
-      ユーザー情報
-===================================  */
-.info-container {
-    width: 200px;
-    background: #f6f5f4;
-    float: right;
-    min-height: 300px;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    background: #F6F5FC;
-    flex-wrap: wrap;
-}
-
-.sidebar__user-name {
-  width: 200px;
-  text-align: center;
-}
-
-
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
 
 
 /*========================================
@@ -723,4 +544,26 @@ input[type="file"].error {
 	text-align: center;
 	width: 100%;
 	opacity: .8;
+}
+
+
+/*========================================
+ 	レビュー投稿
+========================================*/
+
+
+.form-review {
+  // display: flex;
+  // justify-content: center;
+}
+.form-review  > .btn {
+  display: block;
+  /* text-align: center; */
+  margin: 0 auto;
+}
+
+.form-review__content {
+  border: 2px #999 solid;
+  min-height: 100px;
+  display: block;
 }

@@ -19,17 +19,17 @@ User.create!(name:  "bbb",
                password_confirmation: password)
 end
 
-User.first.posts.create!(title: 'Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube',
+@post = User.first.posts.create!(title: 'Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube',
                         youtube_url: 'rMurJ6SxuHs')
 
-User.first.posts.create!(title: 'Home Bossa: Happy Bossa Nova & Morning Jazz Coffee Music for Good Mood and Wake Up',
+@post2 = User.first.posts.create!(title: 'Home Bossa: Happy Bossa Nova & Morning Jazz Coffee Music for Good Mood and Wake Up',
                         youtube_url: '3N0K0_9cvcg')
 
-User.first.posts.create!(title: '2012MLB10　ダルビッシュVSイチロー2度目の対決',
+@post3 = User.first.posts.create!(title: '2012MLB10　ダルビッシュVSイチロー2度目の対決',
                         youtube_url: 'e57zbXC4Y5k')
 
 
-User.second.posts.create!(title: '「常識人間」は成功しない',
+@post4 = User.second.posts.create!(title: '「常識人間」は成功しない',
                         youtube_url: 'L99WnfYCeXg')
 
 
@@ -38,5 +38,15 @@ users = User.all
 user  = users.first
 following = users[2..50]
 followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+following.each do |followed|
+  user.follow(followed)
+  followed.likes.create(post_id: @post.id)
+
+end
+followers.each do |follower|
+  follower.follow(user)
+  follower.likes.create(post_id: @post2.id)
+end
+
+
+#いいね

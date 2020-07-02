@@ -1,4 +1,9 @@
-<h1 class="site-title">ユーザーページ</h1>
+<% if logged_in? && current_user?(@user) %>
+  <section class="post_form">
+    <%= render 'shared/post_form' %>
+  </section>
+  <div class="horizon-container"></div>
+<% end %>
 
 <section id="main" class="products-container">
     <div class="list panel-list">
@@ -12,7 +17,7 @@
     </div>
     <div class="list panel-list">
         <h2 class="horizon-container">
-            <span class="title">お気に入り動画一覧</span>
+            <span class="title">お気に入り動画一覧（<%= @favorite_posts.count %>個）</span>
         </h2>
         <% if @favorite_posts.any? %>
             <%= render @favorite_posts %>
@@ -21,6 +26,6 @@
     </div>
 </section>
 <%= render 'layouts/info' %>
-<% if current_user?(@user) %>
+<% if logged_in? && current_user?(@user) %>
   <%= render 'layouts/sidebar' %>
 <% end %>

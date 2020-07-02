@@ -1,3 +1,90 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/* ==================================
+      パネル
+===================================  */
+
+.user-container {
+  margin: auto;
+box-sizing: border-box;
+}
+
+.user-panel-list {
+	overflow: hidden;
+}
+
+.user-panel {
+	float: left;
+	width: 25%;
+	color: #013156;
+	text-decoration: none;
+	margin-bottom: 40px;
+	position: relative;
+}
+
+.user-panel-index {
+	width: 20%;
+}
+
+
+
+.user-panel__head {
+	width: 150px;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.user-panel__img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+}
+.user-panel__price {
+	margin-top: 10px;
+}
+
+.user-panel-container {
+	position: relative;
+	width: 100%;
+}
+
+.user-panel-cover {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	transform: scale(1.3);
+	transition: all .4s;
+	opacity: 0;
+	text-align: center;
+
+
+}
+
+.user-panel-cover:hover {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	opacity: .7;
+	transform: scale(1.0);
+	transition: all .4s;
+}
+
+.user-panel__icon-link {
+	position: relative;
+	top: 35%;
+	color: #fff;
+	font-size: 40px;
+}

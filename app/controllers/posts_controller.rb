@@ -16,8 +16,9 @@ class PostsController < ApplicationController
      flash[:success] = "post created!"
      redirect_to root_url
    else
-     @feed_items = []
-     render 'static_pages/home'
+     #@feed_items = []
+     flash[:error] = "post uncreated!"
+     redirect_to current_user
    end
  end
 
