@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
-      flash[:info] = "User logged in."
+      flash[:success] = "User logged in."
       redirect_back_or @user
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end
@@ -23,11 +23,13 @@ class SessionsController < ApplicationController
       user.password = SecureRandom.urlsafe_base64
     end
     log_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    flash[:success] = 'ゲストユーザーとしてログインしました。'
+    redirect_to root_path
   end
 
   def destroy
     log_out
+    flash[:success] = "ログアウトしました"
     redirect_to root_url
   end
 

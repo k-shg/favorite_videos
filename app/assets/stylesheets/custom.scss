@@ -539,10 +539,27 @@ input[type="file"].error {
 	border-radius: 50px;
 }
 
+
+ //----	フラッシュ------
+
+
+.notifications {
+  color: white;
+  text-align: center;
+
+  .alert-success {
+    background-color: #4caf50;
+    color: #333;
+  }
+
+  .alert-error {
+    background-color: red;
+  }
+}
+
 .flash-msg {
 	position: fixed;
 	display: none;
-	background: #4caf50;
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
@@ -570,4 +587,32 @@ input[type="file"].error {
   border: 2px #999 solid;
   min-height: 100px;
   display: block;
+}
+
+/*========================================
+ 	フラッシュ
+========================================*/
+
+.notifications {
+  color: white;
+  text-align: center;
+
+  .alert-notice {
+    background-color: #4caf50;
+    color: #333;
+  }
+
+  .alert-error {
+    background-color: red;
+  }
+}
+
+.flash-msg {
+	position: fixed;
+	display: none;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 100%;
+	opacity: .8;
 }
