@@ -8,6 +8,12 @@ User.create!(name:  "bbb",
             password:              "aaaaaa",
             password_confirmation: "aaaaaa")
 
+User.create!(name: "guest",
+            email: "guest@example.com",
+            password:              "password",
+            password_confirmation: "password",
+            image: open("#{Rails.root}/app/assets/images/guest.jpeg")
+            )
 
 99.times do |n|
   name  = Faker::Name.name
