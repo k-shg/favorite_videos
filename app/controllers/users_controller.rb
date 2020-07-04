@@ -95,7 +95,8 @@ class UsersController < ApplicationController
 
     # 正しいユーザーかどうか確認
     def correct_user
+      guest = User.find_by!(email: 'guest@example.com')
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) && current_user?(guest)
     end
 end

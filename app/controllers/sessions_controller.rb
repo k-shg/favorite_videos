@@ -14,8 +14,16 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
+  end
 
-
+  def new_guest
+    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = 'guest'
+      user.image = 'guest.jpeg'
+      user.password = SecureRandom.urlsafe_base64
+    end
+    log_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def destroy

@@ -1,17 +1,19 @@
 <main id="contents" class="site-width">
     <div class="form-container">
-        <div class="row">
-            <%= form_for(:session, url: login_path, html: { class: "form" }) do |f| %>
-              <h2 class="site-title">ログイン</h2>
+        <%= form_for(:session, url: login_path, html: { class: "form" }) do |f| %>
+          <h2 class="site-title">ログイン</h2>
 
-              <%= f.label :email %>
-              <%= f.email_field :email, class:"form__email" %>
+          <%= f.label :email %>
+          <%= f.email_field :email, class:"form__email" %>
 
-              <%= f.label :password, "パスワード" %>
-              <%= f.password_field :password, class:"form__pass" %>
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, class:"form__pass" %>
 
-              <%= f.submit "ログイン", class:"form__submit" %>
-            <% end %>
+          <div class="btn-container-login">
+            <%= link_to 'かんたんログイン', guest_login_path, method: :post, class: 'form__signin btn btn-primary'%>
+            <%= f.submit "ログイン", class:"form__signin btn btn-mid" %>
           </div>
-        </div>
-  </main>
+
+        <% end %>
+    </div>
+</main>

@@ -302,6 +302,7 @@ $gray-lighter: gray;
 
 .panel-list {
 	overflow: hidden;
+  min-height: 150px;
 }
 
 .panel {
@@ -483,6 +484,9 @@ $gray-lighter: gray;
 .form__submit {
     float: right;
     margin: 10px 0;
+}
+.form__signin {
+    margin: 10px 3px;
 }
 
 form .area-msg {
