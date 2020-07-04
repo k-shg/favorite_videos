@@ -10,9 +10,13 @@
 
   </head>
   <body>
-    <% flash.each do |message_type, message| %>
-      <%= message %>
-    <% end %>
+
+    <div class="notifications flash-msg js-flash-msg">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert-#{message_type}") %>
+      <% end %>
+    </div>
+
     <%= render 'layouts/header' %>
     <main id="contents">
       <div class="main-container site-width">
@@ -24,7 +28,6 @@
   </body>
 </html>
 
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.3.min.js"></script>
 <script>
   $('.youtube').click(function(){
     video = '<iframe id="aaa" src="'+ $(this).attr('data-video') +'" frameborder="0" width="320" height="180"></iframe>';
@@ -35,4 +38,16 @@
       console.log(1323);
     },2000);
   });
+
+  var $msg = $('.js-flash-msg');
+  //メッセージがなくても空白が入ってしまうため、空白はすべて取り除く。
+  text = $msg.text().replace(/\s+/g, "");
+
+  if(text) {
+      $msg.slideToggle('slow');
+
+      setTimeout(function() {
+          $msg.slideToggle('slow');
+      }, 1200);
+  }
 </script>

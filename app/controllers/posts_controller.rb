@@ -13,11 +13,10 @@ class PostsController < ApplicationController
    end
 
    if @post.save
-     flash[:success] = "post created!"
+     flash[:success] = "動画を投稿しました"
      redirect_to root_url
    else
-     #@feed_items = []
-     flash[:error] = "post uncreated!"
+     flash[:error] = "動画を投稿できませんでした"
      redirect_to current_user
    end
  end
