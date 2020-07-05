@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "ユーザー登録が完了しました"
+      log_in @user
       redirect_to @user
     else
      render 'new'
@@ -37,10 +38,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if params[:image]
-      #データベースに保存するファイル名はユーザーのid.jpgとする
       @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
-      File.binwrite("public/user_images/#{@user.image_name}",image.read)
+      File.binwrite("public/user_images/#{@user.image_name}", image.read)
     else
       @user.remove_image!
     end
@@ -53,25 +53,18 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def search
-
-    # if logged_in?
-    #   @post  = current_user.posts.build
-    # end
-
     @search_word = params[:search]
     @users = User.search(params[:search]).paginate(page: params[:page])
 
@@ -84,19 +77,16 @@ class UsersController < ApplicationController
                                    :password_confirmation, :image)
     end
 
-    # ログイン済みユーザーかどうか確認
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = "ログインしてください"
         redirect_to login_url
       end
     end
 
-    # 正しいユーザーかどうか確認
     def correct_user
-      guest = User.find_by!(email: 'guest@example.com')
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user) && current_user?(guest)
+      redirect_to(root_url) unless current_user?(@user)
     end
 end
