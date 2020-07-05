@@ -54,11 +54,9 @@ $gray-lighter: gray;
 }
 
 .header__link {
-    color: #fff;
-    text-decoration: none;
-	font-family: 'Courgette', cursive;
+  color: #fff;
+  text-decoration: none;
 	transition: all .7s;
-
 }
 .header__link:hover {
     color: skyblue;
@@ -305,9 +303,13 @@ $gray-lighter: gray;
   min-height: 150px;
 }
 
+.feed-container .panel {
+  height: 220px;
+}
+
 .panel {
+  height: 200px;
 	float: left;
-	width: 25%;
 	color: #013156;
 	text-decoration: none;
 	margin: 10px;
@@ -317,7 +319,6 @@ $gray-lighter: gray;
 
 .panel-index {
 	width: 30%;
-
 }
 
 
@@ -354,8 +355,6 @@ $gray-lighter: gray;
 	transition: all .4s;
 	opacity: 0;
 	text-align: center;
-
-
 }
 
 .panel-cover:hover {

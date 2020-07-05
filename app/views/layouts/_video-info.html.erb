@@ -2,9 +2,9 @@
   <% if logged_in? %>
     <div class="like-edit">
       <% if current_user.already_liked?(@post) %>
-        <%= button_to 'UNLIKE', post_like_path(@post), method: :delete, class: "btn" %>
+        <%= button_to 'いいね', post_like_path(@post), method: :delete, class: "btn unlike" %>
       <% else %>
-        <%= button_to 'LIKE', post_likes_path(@post), class: "btn btn-primary" %>
+        <%= button_to 'いいね', post_likes_path(@post), class: "btn btn-primary like" %>
       <% end %>
     </div>
   <% end %>

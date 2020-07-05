@@ -32,16 +32,12 @@
       <% @comments.each do |c| %>
         <div class="review">
           <div class="review__name-icon">
-            <div>
-              <%= c.user.name %>
-            </div>
-            <div>
-              <% if c.user.image? %>
-                 <%= image_tag c.user.image.thumb.url, size: '50x50' %>
-              <% else %>
-                 <%= image_tag "/assets/default.png", size: '50x50' %>
-              <% end %>
-            </div>
+            <%= content_tag(:div, c.user.name, class: 'review__name') %>
+            <% if c.user.image? %>
+               <%= image_tag c.user.image.thumb.url, size: '50x50' %>
+            <% else %>
+               <%= image_tag "/assets/default.png", size: '50x50' %>
+            <% end %>
           </div>
           <div class="review__comment-container">
             <div class="review__comment">
