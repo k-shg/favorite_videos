@@ -32,10 +32,10 @@
 
   <div class="search-title">
       <div class="search-left"></div>
-          <span class="total-num"><%= @feed_items.count %></span>件の商品が見つかりました
+          <span class="total-num"><%= @feed_items.count %></span>件の動画が見つかりました
       <div class="search-right">
           <span class="num"><%= @feed_items.offset + 1 %></span>-
-          <!-- 合計商品数が表示数よりが少ない場合、合計商品数を表示する -->
+          <!-- 合計動画数が表示数よりが少ない場合、合計動画数を表示する -->
           <span class="num"><%= @feed_items.count > @feed_items.per_page ? @feed_items.per_page + @feed_items.offset : @feed_items.count; %></span>件/
           <spna class="num"><%= @feed_items.count %></spna>件中
       </div>
