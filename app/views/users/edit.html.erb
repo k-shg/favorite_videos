@@ -17,16 +17,16 @@
     <%= f.password_field :password_confirmation, class: "form__repass" %>
 
     <% if @user.image? %>
-       <%= image_tag @user.image.url %>
+       <%= image_tag @user.image.url, class: 'form__img' %>
     <% else %>
-       <%= image_tag "/assets/default.png", size: '400x400' %>
+       <%= image_tag "/assets/default.png", size: '400x400', class: 'form__img' %>
     <% end %>
 
-    <button type="button" class="btn btn-outline-secondary rounded-pill">
-       <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
-    </button>
 
-    <%= f.submit "変更する", class: "form__submit" %>
+  <div class="btn-container-login">
+      <%=   f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%>
+      <%=  f.submit "登録する", class: "form__signin btn btn-mid"%>
+  </div>
 
   <% end %>
 </section><%= render 'layouts/sidebar' %>
