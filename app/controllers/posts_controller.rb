@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
    result = find_videos('snippet', @post.youtube_url)
 
-
    if result.items.present?
      title = result.items.first.snippet.title
      @post.title = title
@@ -35,11 +34,11 @@ class PostsController < ApplicationController
  def search
 
    if logged_in?
-     @post  = current_user.posts.build
+     @post = current_user.posts.build
    end
 
    @search_word = params[:search]
-   @feed_items = Post.search(params[:search]).paginate(page: params[:page])
+   @feed_items = Post.search(params[:search], params[:category_id]).paginate(page: params[:page])
 
    render 'static_pages/home'
  end
@@ -47,7 +46,7 @@ class PostsController < ApplicationController
  private
 
    def post_params
-     params.require(:post).permit(:youtube_url)
+     params.require(:post).permit(:youtube_url, :category_id)
    end
 
 end

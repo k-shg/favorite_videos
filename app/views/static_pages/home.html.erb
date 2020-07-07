@@ -8,8 +8,8 @@
         <%= select_tag :category_id,
            options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
            {
-                       prompt: '選択してください',
-                       class: 'search__select',
+                     prompt: '選択してください',
+                     class: 'search__select',
            }%>
         </div>
         <div class="search__select-box">
