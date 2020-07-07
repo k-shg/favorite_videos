@@ -4,13 +4,13 @@
           <%= text_field_tag :search, @search_word, placeholder: "検索", class: "search__input" %>
         </div>
         <div class="search__select-box">
-            カテゴリー：
-            <select name="category_id" class="search__select">
-                <option class="search__item" value="0">選択してください<span class="icon-select"></span></option>
-                <option value="">エンタメ</option>
-                <option value="">ビジネス</option>
-                <option value="">アニメ</option>
-            </select>
+          カテゴリー：
+        <%= select_tag :category_id,
+           options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
+           {
+                       prompt: '選択してください',
+                       class: 'search__select',
+           }%>
         </div>
         <div class="search__select-box">
             表示順：

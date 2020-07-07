@@ -24,8 +24,9 @@ class PostsController < ApplicationController
  def show
    @post = Post.find(params[:id])
    @like = Like.new
-   @comments = @post.comments.order(id: "DESC") 
+   @comments = @post.comments.order(id: "DESC")
    @comment = Comment.new
+   @category = Category.find_by(id: @post.category_id).name if @post.category_id
  end
 
  def destroy
