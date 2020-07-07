@@ -1,7 +1,7 @@
 
 <h1 class="site-title"><%= @post.title %></h1>
 <section id="main" class="product">
-    <span class="product__category"><?php echo $dbFormData['category_name'] ?></span>
+    <span class="product__category"><%= @category? @category: "未分類"; %></span>
     <div class="product__img-container">
         <iframe
           class="product__img"

@@ -1,4 +1,4 @@
-User.create!(name: "guest",
+User.create!( name: "guest",
             email: "guest@example.com",
             password:              "password",
             password_confirmation: "password",
@@ -6,15 +6,13 @@ User.create!(name: "guest",
 
 User.create!(name:  "taro yamada",
             email: "a@a.com",
-            password:              "aaaaaa",
-            password_confirmation: "aaaaaa")
+            password:              "password",
+            password_confirmation: "password")
 
 User.create!(name:  "jiro tanaka",
             email: "b@b.com",
-            password:              "aaaaaa",
-            password_confirmation: "aaaaaa")
-
-
+            password:              "password",
+            password_confirmation: "password")
 
 99.times do |n|
   name  = Faker::Name.name
@@ -27,9 +25,17 @@ User.create!(name:  "jiro tanaka",
 end
 
 
+category_list = ["エンタメ", "ビジネス", "お笑い", "Youtuber", "恋愛", "アニメ", "スポーツ", "音楽", "自己啓発", "ニュース", "映画"]
 
-title_and_url = {
-  "Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube" => "rMurJ6SxuHs",
+category_list.each do | category |
+  Category.create!(name: category)
+end
+
+
+# hash = { m1: {title: "Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube",url: "rMurJ6SxuHs", category: 7 } }
+
+viedos_info = {
+  "Starbucks Music: 3 Hours of Happy Starbucks Music with Starbucks Music Playlist Youtube" =>  "rMurJ6SxuHs",
   "Home Bossa: Happy Bossa Nova & Morning Jazz Coffee Music for Good Mood and Wake Up" => "3N0K0_9cvcg",
   "2012MLB10　ダルビッシュVSイチロー2度目の対決" => "e57zbXC4Y5k",
   "「常識人間」は成功しない" => "L99WnfYCeXg",
@@ -53,8 +59,8 @@ title_and_url = {
   "バスケを知らない人に見せたいダンク" => "SsmfYJEamyU"
 }
 
-title_and_url.each do |key, value|
-  User.first.posts.create!(title: key, youtube_url: value)
+viedos_info.each do |key, value|
+  User.first.posts.create!(title: key, youtube_url: value, category_id: Random.rand(1..10))
 end
 
 # リレーションシップ
@@ -67,7 +73,7 @@ followers =  users[3..20]
 likers = users[0..40]
 reviewers = users[1..5]
 
-following.each {|followed| guest.follow(followed) }
+following.each { |followed| guest.follow(followed) }
 followers.each { |follower| follower.follow(guest) }
 
 
