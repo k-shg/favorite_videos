@@ -38,7 +38,8 @@ class PostsController < ApplicationController
    end
 
    @search_word = params[:search]
-   @feed_items = Post.search(params[:search], params[:category_id]).paginate(page: params[:page])
+   @order = params[:order]
+   @feed_items = Post.search(params).paginate(page: params[:page], per_page: 15)
 
    render 'static_pages/home'
  end
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
  private
 
    def post_params
-     params.require(:post).permit(:youtube_url, :category_id)
+     params.require(:post).permit(:youtube_url, :category_id, :order)
    end
 
 end

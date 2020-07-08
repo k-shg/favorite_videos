@@ -46,3 +46,4 @@ https://calm-caverns-57605.herokuapp.com/
 ### Youtube APIとの連携
 YoutubeのURLからタイトルを取得できるようにAPIを連携したことです。
 ユーザーはURLを打ち込むだけで動画を登録することができるようになりました。
+###　検索機能のロジック実装

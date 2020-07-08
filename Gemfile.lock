@@ -149,6 +149,8 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    order_as_specified (1.6)
+      activerecord (>= 5.0.0)
     os (1.1.0)
     pg (0.20.0)
     public_suffix (4.0.5)
@@ -263,6 +265,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick (= 4.7.0)
+  order_as_specified
   pg (= 0.20.0)
   puma (~> 3.11)
   rails (~> 5.2.4)

@@ -79,12 +79,12 @@ followers.each { |follower| follower.follow(guest) }
 
 likers.each do |liker|
   posts.each do | post |
-    liker.likes.create!(post_id: post.id)
+    liker.likes.create!(post_id: post.id) if [true, false].sample
   end
 end
 
 reviewers.each do |reviewer|
   posts.each do | post |
-    reviewer.comments.create!(content: Faker::Lorem.paragraph(sentence_count = 4), user_id: reviewer.id, post_id: post.id)
+    reviewer.comments.create!(content: Faker::Lorem.paragraph(sentence_count = 4), user_id: reviewer.id, post_id: post.id) if [true, false].sample
   end
 end
