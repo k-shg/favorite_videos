@@ -35,8 +35,7 @@ https://calm-caverns-57605.herokuapp.com/
 ### インフラ・開発環境等  (実装中)
 ・Docker/docker-compose  
 ・CircleCI (CI/CD)  
-・Rubocop  
-・RSpec  
+・RSpec
 ・AWS(Route53, ALB, ACM, VPC, EC2, S3)  
 
 # 制作背景

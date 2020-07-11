@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+ before_action :logged_in_user, only: [:create]
 
  def create
    @post = current_user.posts.build(post_params)
@@ -32,15 +33,10 @@ class PostsController < ApplicationController
  end
 
  def search
-
-   if logged_in?
-     @post = current_user.posts.build
-   end
-
+   @post = current_user.posts.build if logged_in?
    @search_word = params[:search]
    @order = params[:order]
    @feed_items = Post.search(params).paginate(page: params[:page], per_page: 15)
-
    render 'static_pages/home'
  end
 

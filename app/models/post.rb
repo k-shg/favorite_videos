@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :title, presence: { message: "動画が存在しません" }, length: { maximum: 100 }
-  validates :youtube_url, presence: { message: "動画URLを入力してください" }, length: { maximum: 100 }
+  validates :youtube_url, presence: { message: "動画URLを入力してください" }, length: { maximum: 11 }
 
   def self.search(params)
     search = params[:search]
