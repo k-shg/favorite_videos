@@ -1,6 +1,12 @@
 <header class="header">
     <div class="site-width">
-        <h1 class="header__title"><%= link_to "Favorite Videos", root_path, { class: "header__link"} %></h1>
+      <div class="header__title_sub">
+        好きな動画が見つかるサービス
+      </div>
+      <div class="header__title">
+
+        <%= link_to "Favorite Videos", root_path, { class: "header__link"} %>
+      </div>
         <nav id="nav-top" class="nav">
             <ul class="nav__menu">
               <% if logged_in? %>
