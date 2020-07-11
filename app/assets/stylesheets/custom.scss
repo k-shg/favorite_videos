@@ -40,9 +40,10 @@ $gray-lighter: gray;
       ヘッダー
 ===================================  */
 .header {
-    background: #013156;
+    // background: #013156;
     width: 100%;
-    height: 80px;
+    //height: 80px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
 }
 
 .header__title {
@@ -54,7 +55,8 @@ $gray-lighter: gray;
 }
 
 .header__link {
-  color: #fff;
+  font-size: 25px;
+  color: black;
   text-decoration: none;
 	transition: all .7s;
 }
@@ -63,6 +65,53 @@ $gray-lighter: gray;
 	transition: all .7s;
 	transform: scale(1.1);
 }
+
+
+.header__title_sub {
+  margin-top: 10px;
+  margin-bottom: -20px;
+  opacity: 0.4;
+  font-size: 13px;
+}
+
+/* ==================================
+      ヒーロー画像
+===================================  */
+
+.hero {
+  margin-top: 20px;
+  position: relative;
+  height: 180px;
+}
+
+.hero-copy {
+  position: relative;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-align: center;
+  text-shadow: 0 7px 7px rgba(0, 0, 0, 1);
+  margin-bottom: 20px;
+}
+
+.filter {
+  background: #000;
+  height: 420px;
+
+}
+
+.hero__img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  position: absolute;
+  opacity: .6;
+  background: #000;
+  opacity: .6;
+}
+
+
 
 /* ==================================
       ナビゲーション
@@ -100,13 +149,15 @@ $gray-lighter: gray;
 ===================================  */
 
 .site-width {
-  width: 980px;
+  width: 1140px;
   margin: 0 auto;
   /* background: grey;
   height: 900px; */
 }
 .main-container {
     overflow: hidden;
+    z-index: 2;
+    position: relative;
 }
 
 #contents {
@@ -136,6 +187,7 @@ $gray-lighter: gray;
 #main.feed-container {
     margin: auto;
 	box-sizing: border-box;
+
 	/* border: 1px solid black; */
 }
 
@@ -233,10 +285,10 @@ $gray-lighter: gray;
 }
 
 .form {
-    padding: 30px;
-    box-sizing: border-box;
-    overflow: hidden;
-    margin: 0 auto;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
 	background: #f6f5f4;
 }
 
@@ -301,7 +353,9 @@ $gray-lighter: gray;
       パネル
 ===================================  */
 
-
+.feed-container {
+  margin-top: 150px;
+}
 .panel-list {
 	overflow: hidden;
   min-height: 150px;
@@ -390,6 +444,12 @@ $gray-lighter: gray;
   検索エリア
 ========================================*/
 
+
+#search {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .search-title {
 	width: 100%;
 	height: 40px;
@@ -414,42 +474,47 @@ $gray-lighter: gray;
 }
 
 .search__form {
-	padding: 10px;
-    box-sizing: border-box;
-    margin: 0 auto;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background: white;
 }
 
 
 .search__select-box {
 	float: left;
-	margin-right: 20px;
+  border-right: 1px solid #d5d5d8;
 }
 .search__select-box:first-child {
-	width: 30%;
+  width: 56%;
 }
 
 .search__input {
+
 	width: 100%;
-	border: 1px solid #c6c6c6;
 	height: 40px;
 	font-size: 18px;
-    box-sizing: border-box;
-	padding: 10px;
+  box-sizing: border-box;
+  border: none;
+  border-right: 1px solid #d5d5d8;
+  text-align: center;
+
 }
 .search__select {
 	margin-bottom: 0;
 	padding: 5px;
 	font-size: 14px;
 	display: inline-block;
-    height: 40px;
-	border: 1px solid #c6c6c6;
+  height: 40px;
 	width: 150px;
 	background: #fff;
+  border: none;
+
 }
 
 .search__button {
 	-webkit-appearance: none;
-	height: 40px;
+  width: 99px;
+  height: 44px;
 	transition: all .6s;
 }
 

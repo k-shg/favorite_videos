@@ -37,7 +37,8 @@ class PostsController < ApplicationController
    @search_word = params[:search]
    @order = params[:order]
    @feed_items = Post.search(params).paginate(page: params[:page], per_page: 15)
-   render 'static_pages/home'
+  # render :layout => 'home'
+   render template: 'static_pages/home', layout: 'home'
  end
 
  private

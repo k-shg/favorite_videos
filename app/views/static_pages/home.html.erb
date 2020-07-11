@@ -1,37 +1,49 @@
-<div id="search">
-  <%= form_tag(search_posts_path, method: :get, class: "form search__form", enforce_utf8: false) do %>
-        <div class="search__select-box">
-          <%= text_field_tag :search, @search_word, placeholder: "検索", class: "search__input" %>
-        </div>
-        <div class="search__select-box">
-          カテゴリー：
-        <%= select_tag :category_id,
-           options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), { prompt: '選択してください', class: 'search__select'} %>
-        </div>
-        <div class="search__select-box">
-            表示順：
-            <%= select_tag 'order', options_for_select([["いいねが多い順", "1"], ["いいねが少ない順", 2]], @order), { prompt: '選択してください', class: 'search__select'}  %>
-        </div>
-      <%= button_to 'Search', class: "search__button" do %>
-        <i class="fas fa-search-plus"></i>
-        <span class="search__button-title">検索</span>
-      <% end %>
-  <% end %>
+
+<div class="hero">
+  <div class="filter">
+    <%= image_tag "/assets/BG_youtube_office.jpg" , class: "hero__img"%>
+  </div>
 </div>
-<div class="horizon-container"></div>
 
-<section class="feed-container">
-
-  <div class="search-title">
-      <div class="search-left"></div>
-          <span class="total-num"><%= @feed_items.count %></span>件の動画が見つかりました
-      <div class="search-right">
-          <span class="num"><%= @feed_items.offset + 1 %></span>-
-          <!-- 合計動画数が表示数よりが少ない場合、合計動画数を表示する -->
-          <span class="num"><%= @feed_items.count > @feed_items.per_page ? @feed_items.per_page + @feed_items.offset : @feed_items.count; %></span>件/
-          <spna class="num"><%= @feed_items.count %></spna>件中
-      </div>
+<div class="main-container site-width">
+  <div class="hero-copy">
+    みんなの投稿から動画を探そう！
   </div>
 
-  <%= render 'shared/feed' %>
-</section>
+  <div id="search">
+    <%= form_tag(search_posts_path, method: :get, class: "search__form", enforce_utf8: false) do %>
+          <div class="search__select-box">
+            <%= text_field_tag nil, @search_word, placeholder: "検索", name: "search", class: "search__input" %>
+          </div>
+          <div class="search__select-box">
+          <%= select_tag :category_id,
+             options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), { prompt: 'カテゴリーを選択', class: 'search__select'} %>
+          </div>
+          <div class="search__select-box">
+              <%= select_tag 'order', options_for_select([["いいねが多い順", "1"], ["いいねが少ない順", 2]], @order), { prompt: '表示順を選択', class: 'search__select'}  %>
+          </div>
+        <%= button_to 'Search', class: "search__button" do %>
+          <i class="fas fa-search-plus"></i>
+          <span class="search__button-title">検索</span>
+        <% end %>
+    <% end %>
+  </div>
+
+
+  <section class="feed-container">
+
+    <div class="search-title">
+        <div class="search-left"></div>
+            <span class="total-num"><%= @feed_items.count %></span>件の動画が見つかりました
+        <div class="search-right">
+            <span class="num"><%= @feed_items.offset + 1 %></span>-
+            <!-- 合計動画数が表示数よりが少ない場合、合計動画数を表示する -->
+            <span class="num"><%= @feed_items.count > @feed_items.per_page ? @feed_items.per_page + @feed_items.offset : @feed_items.count; %></span>件/
+            <spna class="num"><%= @feed_items.count %></spna>件中
+        </div>
+    </div>
+
+    <%= render 'shared/feed' %>
+  </section>
+
+</div>
