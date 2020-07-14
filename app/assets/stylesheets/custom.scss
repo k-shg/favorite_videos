@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "bootstrap-sprockets";
 @import url("reset.css");
 
 /* mixins, variables, etc. */
@@ -124,13 +125,16 @@ $gray-lighter: gray;
 
 
 .nav__menu {
-    line-height: 80px;
-    list-style: none;
+  line-height: 80px;
+  list-style: none;
+  position: relative;
 }
 
 .nav__menu-item  {
-    float: right;
-    margin: 0 10px;
+  float: right;
+  margin: 0 10px;
+  border: 2px solid skyblue;
+  padding: 5px;
 }
 
 .nav__link {
@@ -142,6 +146,51 @@ $gray-lighter: gray;
 .nav__link:hover {
   color: white;
 	background: skyblue;
+}
+
+.nav_icon {
+  float: right;
+  cursor: pointer;
+}
+.nav_link {
+  float: right;
+}
+
+.nav_mypage {
+  line-height: 80px;
+}
+
+.nav_child {
+  overflow: hidden;
+  width: 10%;
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10px;
+  top: 48px;
+  right: 0%;
+  background-color: #fff;
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  text-align: left;
+
+
+  &_link {
+    display: block;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid black;
+    font-size: 12px;
+    transition: .6s;
+    margin-left: 5px;
+  }
+  &_link:hover {
+    text-decoration: none;
+    background-color: skyblue;
+    color: white;
+    transition: .6s;
+  }
 }
 
 
