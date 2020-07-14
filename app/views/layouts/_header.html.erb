@@ -7,15 +7,79 @@
         <%= link_to "Favorite Videos", root_path, { class: "header__link"} %>
       </div>
         <nav id="nav-top" class="nav">
-            <ul class="nav__menu">
-              <% if logged_in? %>
-                <li class="nav__menu-item"><%= link_to "ログアウト", logout_path , { class: "nav__link btn btn-primary", method: :delete} %></li>
-                <li class="nav__menu-item"><%= link_to "マイページ", user_path(current_user), { class: "nav__link btn btn-primary"} %></li>
+          <% if logged_in? %>
+          <div class="nav__menu">
+            <div class="nav_icon">
+                <% if @user.image? %>
+                   <%= image_tag @user.image.thumb_liked.url %>
+                   <i class="fas fa-caret-down"></i>
+                <% else %>
+                   <%= image_tag "/assets/default.png", size: '30x30' %>
+                   <i class="fas fa-caret-down"></i>
+                <% end %>
+            </div>
 
-              <% else %>
-                <li class="nav__menu-item"><%= link_to "ログイン",  login_path, { class: "login_btn clear-decoration"} %></li>
+            <ul class="nav_child">
+              <%= link_to user_path(@user), { class: "nav_child_link"} do %>
+                <i class="fas fa-caret-right"></i>
+                マイページ
+              <% end %>
+              <%= link_to logout_path, { class: "nav_child_link", method: "delete"} do %>
+                <i class="fas fa-caret-right"></i>
+                ログアウト
+              <% end %>
+              <%= link_to edit_user_path(@user), { class: "nav_child_link" } do %>
+                <i class="fas fa-caret-right"></i>
+                ユーザー設定
               <% end %>
             </ul>
+
+          <% else %>
+            <div class="nav__menu"><%= link_to "ログイン",  login_path, { class: "nav_link login_btn clear-decoration"} %> </div>
+          <% end %>
+
         </nav>
     </div>
 </header>
+
+
+
+
+
+<script type="text/javascript">
+  $(function () {
+    $('.nav_icon').click(function() {
+
+      if ($(this).attr('class') == 'selected') {
+
+        // メニュー非表示
+        console.log(111)
+        $(this).removeClass('selected').next('ul').slideUp('fast');
+      } else {
+        console.log(222)
+        // 表示しているメニューを閉じる
+        $('.nav_icon').removeClass('selected');
+        $('ul').hide();
+
+        // メニュー表示
+        $(this).addClass('selected').next('ul').slideDown('fast');
+      }
+  });
+
+  // マウスカーソルがメニュー上/メニュー外
+  $('.nav_icon, ul').hover(function(){
+    over_flg = true;
+  }, function(){
+    over_flg = false;
+  });
+
+  // メニュー領域外をクリックしたらメニューを閉じる
+  $('body').click(function() {
+    if (over_flg == false) {
+      $('span').removeClass('selected');
+      $('ul').slideUp('fast');
+    }
+  });
+});
+
+</script>
