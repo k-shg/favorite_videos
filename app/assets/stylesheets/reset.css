@@ -104,3 +104,7 @@ input, select {
 input[type="file"] {
   display: inline;
 }
+
+input, select:focus {
+  outline: 0;
+}

@@ -4,7 +4,6 @@
         好きな動画が見つかるサービス
       </div>
       <div class="header__title">
-
         <%= link_to "Favorite Videos", root_path, { class: "header__link"} %>
       </div>
         <nav id="nav-top" class="nav">
@@ -14,8 +13,7 @@
                 <li class="nav__menu-item"><%= link_to "マイページ", user_path(current_user), { class: "nav__link btn btn-primary"} %></li>
 
               <% else %>
-                <li class="nav__menu-item"><%= link_to "ユーザー登録", signup_path , { class: "nav__link btn btn-primary"} %></li>
-                <li class="nav__menu-item"><%= link_to "ログイン",  login_path, { class: "nav__link btn btn-primary"} %></li>
+                <li class="nav__menu-item"><%= link_to "ログイン",  login_path, { class: "login_btn clear-decoration"} %></li>
               <% end %>
             </ul>
         </nav>

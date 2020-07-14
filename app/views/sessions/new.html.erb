@@ -1,19 +1,34 @@
 <main id="contents" class="site-width">
-    <div class="form-container">
-        <%= form_for(:session, url: login_path, html: { class: "form" }) do |f| %>
-          <h2 class="site-title">ログイン</h2>
+  <div class="sign-container">
+    <div class="signup-container">
+      　<div class="site-title underline">初めてご利用の方はこちら</div>
+      <div class="sign-btn__container">
+        <%= link_to "新規会員登録", signup_path , { class: "sign-btn signup-btn"} %>
+        <%= link_to 'お試し利用（簡単ログイン）', guest_login_path, method: :post, class: 'sign-btn otameshi-btn'%>
+      </div>
 
-          <%= f.label :email %>
-          <%= f.email_field :email, class:"form__email" %>
-
-          <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class:"form__pass" %>
-
-          <div class="btn-container-login">
-            <%= link_to 'かんたんログイン', guest_login_path, method: :post, class: 'form__signin btn btn-primary'%>
-            <%= f.submit "ログイン", class:"form__signin btn btn-mid" %>
-          </div>
-
-        <% end %>
     </div>
+
+    <div class="signup-container">
+      　<div class="site-title underline">メールアドレスでログイン</div>
+
+      <%= form_for(:session, url: login_path ) do |f| %>
+
+        <div class="sign-email">
+          <%= f.label :email, "メールアドレス", class: "sign__label" %>
+          <%= f.email_field :email, class:"sign__input sign__email" %>
+        </div>
+
+        <div class="sign-pass">
+          <%= f.label :password, "パスワード", class: "sign__label" %>
+          <%= f.password_field :password, class:"sign__input sign__pass" %>
+        </div>
+
+        <div class="btn-container-login">
+          <%= f.submit "ログイン", class:"login-btn" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
 </main>

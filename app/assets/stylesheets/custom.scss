@@ -61,9 +61,10 @@ $gray-lighter: gray;
 	transition: all .7s;
 }
 .header__link:hover {
-    color: skyblue;
+  color: skyblue;
 	transition: all .7s;
 	transform: scale(1.1);
+  text-decoration: none;
 }
 
 
@@ -133,13 +134,13 @@ $gray-lighter: gray;
 }
 
 .nav__link {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
 	background: #f6f5f4;
 }
 .nav__link:hover {
-    color: white;
+  color: white;
 	background: skyblue;
 }
 
@@ -151,13 +152,11 @@ $gray-lighter: gray;
 .site-width {
   width: 1140px;
   margin: 0 auto;
-  /* background: grey;
-  height: 900px; */
 }
 .main-container {
-    overflow: hidden;
-    z-index: 2;
-    position: relative;
+  overflow: hidden;
+  z-index: 2;
+  position: relative;
 }
 
 #contents {
@@ -175,9 +174,9 @@ $gray-lighter: gray;
 
 
 .site-title {
-    text-align: center;
-    margin-bottom: 50px;
-	font-size: 30px;
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 22px;
 }
 
 #main.form-container {
@@ -185,8 +184,8 @@ $gray-lighter: gray;
 }
 
 #main.feed-container {
-    margin: auto;
-	box-sizing: border-box;
+  margin: auto;
+  box-sizing: border-box;
 
 	/* border: 1px solid black; */
 }
@@ -274,10 +273,9 @@ $gray-lighter: gray;
 
 
 .form-container {
-    width:450px;
-    margin: 80px auto;
-    border: 3px solid #bababa;
-
+  width:450px;
+  margin: 80px auto;
+  border: 3px solid #bababa;
 }
 
 .form-container.search{
@@ -489,16 +487,18 @@ $gray-lighter: gray;
 }
 
 .search__input {
-
 	width: 100%;
 	height: 40px;
 	font-size: 18px;
   box-sizing: border-box;
   border: none;
   border-right: 1px solid #d5d5d8;
-  text-align: center;
-
 }
+
+.search__input::placeholder {
+  text-align: center;
+}
+
 .search__select {
 	margin-bottom: 0;
 	padding: 5px;
@@ -516,15 +516,13 @@ $gray-lighter: gray;
   width: 99px;
   height: 44px;
 	transition: all .6s;
+  background: skyblue;
+  border: none;
 }
 
 .search__button:hover {
 	cursor: pointer;
-	transform: translate(0, -5px);
-	background: #0e3056;
-	/* transform: scale(1.2); */
-	transition: all .6s;
-	color: #fff;
+  opacity: .6;
 }
 
 
@@ -599,14 +597,26 @@ input[type="file"].error {
 }
 
 .required {
-    background: #fe8a8b;
-    color: white;
-    padding: 7px 5px;
-	margin: 0 7px;
-    font-size: 14px;
-	border-radius: 50px;
+  background: #fe8a8b;
+  color: white;
+  padding: 7px 5px;
+  margin: 0 7px;
+  font-size: 14px;
+  border-radius: 50px;
+}
+.clear-decoration {
+  border: none;  /* 枠線を消す */
+  outline: none; /* クリックしたときに表示される枠線を消す */
+  background: transparent; /* 背景の灰色を消す */
+	text-decoration: none;
 }
 
+.clear-decoration:hover {
+  // border: none;  /* 枠線を消す */
+  // outline: none; /* クリックしたときに表示される枠線を消す */
+  // background: transparent; /* 背景の灰色を消す */
+	text-decoration: none;
+}
 
  //----	フラッシュ------
 
