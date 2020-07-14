@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_current_user
   include SessionsHelper
   include PostsHelper
 
@@ -6,15 +7,17 @@ class ApplicationController < ActionController::Base
     render html: 'hello'
   end
 
-
   private
 
-   # ユーザーのログインを確認する
    def logged_in_user
      unless logged_in?
        store_location
        flash[:danger] = "Please log in."
        redirect_to login_url
      end
+   end
+
+   def set_current_user
+     @user = current_user
    end
 end
