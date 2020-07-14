@@ -13,7 +13,7 @@
   <div id="search">
     <%= form_tag(search_posts_path, method: :get, class: "search__form", enforce_utf8: false) do %>
           <div class="search__select-box">
-            <%= text_field_tag nil, @search_word, placeholder: "検索", name: "search", class: "search__input" %>
+            <%= text_field_tag nil, @search_word, placeholder: "キーワード [例:嵐,イチロー,ドッキリ]", name: "search", class: "search__input" %>
           </div>
           <div class="search__select-box">
           <%= select_tag :category_id,

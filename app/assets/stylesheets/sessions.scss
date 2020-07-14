@@ -1,3 +1,118 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.sign-container {
+  border: 1px solid #bababa;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+.signup-container {
+  float: left;
+  width: 50%;
+  margin-top: 40px
+}
+
+
+.login-container {
+  float: right;
+  width: 50%;
+  margin-top: 40px
+}
+
+
+.sign-btn__container {
+  margin-bottom: 10px;
+}
+
+
+.sign-btn {
+  display: block;
+  width: 60%;
+  margin: 30px auto;
+  margin-top: 55px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.signup-btn {
+	background: skyblue;
+  transition: all .7s;
+}
+
+.signup-btn:hover {
+  color: white;
+  transition: all .7s;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.otameshi-btn {
+	background: #eee;
+  transition: all .7s;
+  border-radius: 15px;
+}
+
+.otameshi-btn:hover {
+  transition: all .7s;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.otameshi_only {
+  display: block;
+  width: 60%;
+  margin: 30px auto;
+  margin-top: 150px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.login-btn {
+  display: block;
+  width: 60%;
+  margin: 30px auto;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 15px;
+  transition: all .7s;
+  background: black;
+  color: white;
+}
+
+
+.login-btn:hover {
+  transform: scale(1.05);
+  transition: all .7s;
+}
+.underline {
+  border-bottom: solid 1px #0f9ada;
+  content: '';
+}
+
+.sign-email, .sign-pass {
+  margin-top: 20px;
+}
+
+.sign__input{
+  line-height: 30px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+}
+
+.sign__label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}

@@ -17,6 +17,16 @@ $gray-lighter: gray;
       ボタン
 ===================================  */
 
+.login_btn {
+  color: black;
+  transition: all 0.6s;
+}
+
+.login_btn:hover {
+  color: skyblue;
+  transition: all 0.6s;
+	transform: scale(1.1);
+}
 
 .btn {
 	transition: all 0.6s;
@@ -67,10 +77,6 @@ $gray-lighter: gray;
 	cursor: pointer;
 }
 
-// .unlike:hover {
-// 	background: #efefef;
-// 	color: black;
-// }
 
 .btn-container-login {
 	text-align: center;
