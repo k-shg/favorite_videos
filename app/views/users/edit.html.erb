@@ -1,42 +1,75 @@
+  <main id="contents" class="site-width">
+    <div class="sign-container">
+      <div class="signup-container">
+        　<div class="site-title underline">プロフィール編集</div>
 
-<h1 class="site-title">プロフィール編集</h1>
-<section id="main" class="form-container">
-  <%= form_for(@user, html: { class: "form" }, multipart: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+        <%= form_for(@user, multipart: true) do |f| %>
 
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name, class: "form__name" %>
+          <div class="sign-email">
+            <%= f.label :name, "名前", class: "sign__label" %>
+            <%= f.text_field :name, class:"sign__input sign__email" %>
+          </div>
 
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form__email" %>
+          <div class="sign-email">
+            <%= f.label :email, "メールアドレス", class: "sign__label" %>
+            <%= f.email_field :email, class:"sign__input sign__email" %>
+          </div>
 
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, class:" form__pass" %>
+          <div class="sign-pass">
+            <%= f.label :password, "パスワード", class: "sign__label" %>
+            <%= f.password_field :password, class:"sign__input sign__pass" %>
+          </div>
 
-    <%= f.label :password_confirmation, "パスワード(再入力)" %>
-    <%= f.password_field :password_confirmation, class: "form__repass" %>
+          <div class="sign-pass">
+            <%= f.label :password_confirmation, "パスワード再入力", class: "sign__label" %>
+            <%= f.password_field :password_confirmation, class:"sign__input sign__pass" %>
+          </div>
 
-    <% if @user.image? %>
-       <%= image_tag @user.image.url, class: 'form__img' %>
-    <% else %>
-       <%= image_tag "/assets/default.png", size: '400x400', class: 'form__img' %>
-    <% end %>
+          <%= f.label :image, "ファイル選択", class: "edit_img_label" %>
+          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form__img_field js_on_change', style: 'display: none;' %>
 
 
-  <div class="btn-container-login">
-      <%=   f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%>
-      <%=  f.submit "登録する", class: "form__signin btn btn-mid"%>
-  </div>
 
-  <% end %>
-</section><%= render 'layouts/sidebar' %>
+          <div class="btn-container-login edit_btn">
+            <%= f.submit "変更", class:"login-btn" %>
+          </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+      </div>
+      <div class="edit_img_container">
+
+          <% if @user.image? %>
+             <%= image_tag @user.image.url, size: '300x300', class: 'form__img' %>
+          <% else %>
+             <%= image_tag "/assets/default.png", size: '300x300', class: 'form__img' %>
+          <% end %>
+            <img id="preview" style:"display:none;"></img>
+
+        <% end %>
+
+      </div>
+    </div>
+  </main>
+
+
 <script type="text/javascript">
-  $('#user_image').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
-    }
-  });
+  $(function () {
+    console.log(124);
+
+      $('#user_image').on('change', function (e) {
+        $('.edit_img_label').addClass('selected_img');
+        $("#preview").addClass('is_active');
+
+
+
+
+        console.log(343);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#preview").attr('src', e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]);
+    });
+});
+
 </script>
