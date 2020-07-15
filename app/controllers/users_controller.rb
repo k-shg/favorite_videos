@@ -1,4 +1,4 @@
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
 
@@ -37,13 +37,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+
     if params[:image]
       @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
       File.binwrite("public/user_images/#{@user.image_name}", image.read)
-    else
-      @user.remove_image!
     end
+
+    @user.remove_image! if params[:image].nil?
 
     if @user.update_attributes(user_params)
       redirect_to @user

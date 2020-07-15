@@ -101,9 +101,7 @@ input, select {
     vertical-align:middle;
 }
 
-input[type="file"] {
-  display: inline;
-}
+
 
 input, select:focus {
   outline: 0;
