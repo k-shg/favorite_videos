@@ -1,14 +1,20 @@
-<% if logged_in? && current_user?(@user) %>
-  <section class="post_form">
-    <%= render 'shared/post_form' %>
-  </section>
-  <div class="horizon-container"></div>
-<% end %>
+<div class="info_side_container">
+  <%= render 'layouts/info' %>
+  <%# if logged_in? && current_user?(@user) %>
+    <%= render 'layouts/sidebar' %>
+  <% #end %>
+</div>
 
-<section id="main" class="products-container">
+<section id="main">
+  <div class="products_container">
     <div class="list panel-list">
         <h2 class="horizon-container">
-            <span class="title">登録動画一覧（<%= @user.posts.count %>個）</span>
+          <% if logged_in? && current_user?(@user) %>
+              <span class="title">あなたにオススメな動画（<%= @user.posts.count %>個）</span>
+        　<% else %>
+              <span class="title">登録動画一覧（<%= @user.posts.count %>個）</span>
+          <% end %>
+
         </h2>
         <% if @user.posts.any? %>
             <%= render @posts %>
@@ -24,8 +30,18 @@
           <%= will_paginate @favorite_posts %>
         <% end %>
     </div>
+  </div>
 </section>
-<%= render 'layouts/info' %>
-<% if logged_in? && current_user?(@user) %>
-  <%= render 'layouts/sidebar' %>
-<% end %>
+
+
+<style media="screen">
+
+  .products_container {
+    margin-top: 20px;
+    min-height: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 0 8px grey;
+    width: 99%;
+  }
+</style>

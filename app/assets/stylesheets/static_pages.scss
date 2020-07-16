@@ -86,14 +86,19 @@ $gray-lighter: gray;
       サイドバー
 ===================================  */
 
-.sidebar-container {
-    width: 200px;
-    background: #f6f5f4;
-    float: right;
-    min-height: 300px;
-    padding: 15px;
-    box-sizing: border-box;
-}
+// .sidebar-container {
+//   margin-top: 20px;
+//   float: left;
+//   min-height: 200px;
+//   padding: 15px;
+//   box-sizing: border-box;
+//   display: flex;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   text-align: center;
+//   box-shadow: 0 0 3px grey;
+//   width: 100%;
+// }
 
 .sidebar {
 	transition: all .7s;
@@ -115,49 +120,62 @@ $gray-lighter: gray;
 
 
 .sidebar__link {
-	text-decoration: none;
-	display: block;
-	height: 50px;
-	line-height: 50px;
-	font-size: 15px;
+	// text-decoration: none;
+	// display: block;
+	// height: 50px;
+	// line-height: 50px;
+	// font-size: 15px;
 
 }
-.sidebar__link:hover {
-	color: #fff;
-	transform: scale(1.1);
-}
+// .sidebar__link:hover {
+// 	color: #fff;
+// 	transform: scale(1.1);
+// }
 
 
 /* ==================================
       ユーザー情報
 ===================================  */
+ .info_side_container {
+   float: left;
+   width: 300px;
+   margin-left: 6px;
+ }
+
 .info-container {
-    width: 200px;
-    background: #f6f5f4;
-    float: right;
-    min-height: 300px;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
+  margin-top: 3px;
+  float: left;
+  min-height: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  box-shadow: 0 0 3px grey;
+  width: 100%;
+
+  & img {
+    border-radius: 100%;
+    height: 100px;
+    float: left;
+  }
 }
 
+
+
 .sidebar__user-name {
-  width: 200px;
   text-align: center;
+  font-weight: bold;
 }
 
 
 .stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
+  width: 150px;
+  height: 50px;
+  margin: 10px;
   a {
     float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
     color: gray;
     &:first-child {
       padding-left: 0;
@@ -169,7 +187,7 @@ $gray-lighter: gray;
     }
   }
   strong {
-    display: block;
+    // display: block;
   }
 }
 
@@ -178,6 +196,10 @@ $gray-lighter: gray;
 	margin-bottom: 25px;
 }
 
+
+.btn_follow {
+
+}
 /*========================================
  	動画情報
 ========================================*/
