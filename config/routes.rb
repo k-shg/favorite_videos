@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :posts, only: [:index, :show, :create] do
+  resources :posts do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
     collection do
@@ -23,4 +23,5 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+  get '/check', to: 'posts#check'
 end

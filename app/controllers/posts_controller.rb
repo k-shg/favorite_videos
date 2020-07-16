@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
  before_action :logged_in_user, only: [:create]
 
+
+ def new
+   @post  = current_user.posts.build
+   @post.comments.build
+ end
+
  def create
    @post = current_user.posts.build(post_params)
    @post.youtube_url = params[:post][:youtube_url].last(11)
@@ -12,7 +18,7 @@ class PostsController < ApplicationController
      @post.title = title
    end
 
-   if @post.save
+   if @post.save!
      flash[:success] = "動画を投稿しました"
      redirect_to root_url
    else
@@ -41,10 +47,32 @@ class PostsController < ApplicationController
    render template: 'static_pages/home', layout: 'home'
  end
 
+ def check
+   #
+   @post  = current_user.posts.build
+   @post.comments.build
+
+   @post.youtube_url = youtube_url = params[:ajax_handler]
+
+   result = find_videos('snippet', @post.youtube_url.last(11))
+
+
+   if result.items.present?
+     title = result.items.first.snippet.title
+     @post.title = result.items.first.snippet.title
+     @post.channel_title = result.items.first.snippet.channel_title
+   end
+
+
+
+   render 'new'
+
+ end
+
  private
 
    def post_params
-     params.require(:post).permit(:youtube_url, :category_id, :order)
+     params.require(:post).permit(:youtube_url, :category_id, :order, comments_attributes:[:content, :user_id])
    end
 
 end
