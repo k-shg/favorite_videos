@@ -1,5 +1,56 @@
 <section id="sidebar" class="sidebar-container">
 
+  <%= link_to user_path(@user), { class: "sidebar__link"} do %>
 
+    マイページ
+  <% end %>
+  <%= link_to edit_user_path(@user), { class: "sidebar__link" } do %>
+
+    ユーザー設定
+  <% end %>
+  <%= link_to new_post_path, { class: "sidebar__link" } do %>
+
+    動画を共有する
+  <% end %>
+  <%= link_to users_path, { class: "sidebar__link" } do %>
+
+    ユーザー一覧
+  <% end %>
+  <%= link_to logout_path, { class: "sidebar__link", method: "delete"} do %>
+
+    ログアウト
+  <% end %>
 
 </section>
+
+
+<style media="screen">
+  .sidebar-container {
+    margin-top: 20px;
+    float: left;
+    min-height: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 0 3px grey;
+    width: 100%;
+  }
+
+  .sidebar__link {
+    border-bottom: 1px dotted grey;
+    display: block;
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+  }
+
+  .sidebar__link:hover {
+  	color: #fff;
+  	/* transform: scale(1.1); */
+    text-decoration: none;
+    background-color: skyblue;
+    color: white;
+    transition: .6s;
+  }
+</style>
