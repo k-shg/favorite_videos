@@ -349,13 +349,13 @@ $gray-lighter: gray;
 
 .input[type="text"],
 .input[type="password"],
-.select, form textarea {
+.select {
     display: block;
     width: 100%;
     height: 60px;
     font-size: 18px;
     box-sizing: border-box;
-    // margin-bottom: 20px;
+
     border: none;
 	border-radius: 5px;
 }
@@ -376,7 +376,9 @@ $gray-lighter: gray;
 .form__img {
   margin-bottom: 20px;
   display: block;
-  margin: 0 auto;
+  margin: 25px auto;
+  border: 1px solid black;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
 
   &_field {
     display: none;
@@ -435,6 +437,7 @@ $gray-lighter: gray;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px grey;
 }
 #error_explanation {
   color: red;

@@ -28,6 +28,10 @@
                 <i class="fas fa-caret-right"></i>
                 ユーザー設定
               <% end %>
+              <%= link_to new_post_path, { class: "nav_child_link" } do %>
+                <i class="fas fa-caret-right"></i>
+                動画を共有する
+              <% end %>
               <%= link_to logout_path, { class: "nav_child_link", method: "delete"} do %>
                 <i class="fas fa-caret-right"></i>
                 ログアウト

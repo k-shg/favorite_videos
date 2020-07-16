@@ -86,9 +86,127 @@
 }
 
 
+.share__container {
+	position: relative;
+	margin-top: 30px;
+  float: left;
+  width: 50%;
+}
+
+.share__review {
+	width: 538px;
+  height: 189px;
+  outline: none;
+}
+
+.share__title {
+	background: white;
+	border: 1px solid black;
+	padding: 10px;
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+	font-size: 14px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 500px;
+	overflow: hidden;
+	margin: 20px auto;
+}
+
+.share__title_channel {
+	padding: 10px;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 400px;
+	overflow: hidden;
+	margin: 4px auto;
+	text-align: center;
+}
+.post__form__select {
+
+}
+
+.ribbon2 {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 18px;/*フォントサイズ*/
+  background: #78d0f5;/*背景色*/
+  color: #FFF;/*文字色*/
+  box-sizing: border-box;
+	margin-bottom: 20px;
+}
+
+.ribbon2 h3 {
+  margin: 0;
+  padding: 0 30px;
+  border-top: dashed 1px #FFF;/*上の破線*/
+  border-bottom: dashed 1px #FFF;/*下の破線*/
+  //line-height: 46px;
+}
+
+.ribbon2:before, .ribbon2:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon2:before {
+  /*左端の山形*/
+  top: 0;
+  left: 0;
+  border-width: 30px 0px 30px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon2:after {
+  /*右端の山形*/
+  top: 0;
+  right: 0;
+  border-width: 30px 15px 30px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
 
 
+.ribbon12-wrapper {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 10px 0;
+  width: 450px;
+	box-shadow: 0 0 8px grey;
+}
 
+.ribbon12 {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 0 0 -20px;
+  width: calc(100% + 20px);
+  font-size: 16px;
+  color: white;
+  background: #70a6ff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	margin-bottom: 15px;
+}
+
+.ribbon12:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #6081b7;
+}
 /*========================================
   商品詳細レイアウト あとで修正必要
 ========================================*/
@@ -196,4 +314,14 @@ p.comment {
 	color: #000;
 	font-size: 14px;
 	box-sizing: border-box;
+}
+
+
+.form-review__content {
+	display: block;
+	width: 100%;
+	height: 60px;
+	font-size: 18px;
+	box-sizing: border-box;
+	border-radius: 5px;
 }
