@@ -1,5 +1,5 @@
 <main id="contents" class="site-width">
-  <div class="sign-container">
+  <div class="share__container__one">
     <div class="signup-container">
       　<div class="site-title underline">動画を共有する</div>
 
@@ -16,11 +16,26 @@
               <%= f.select :category, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]) , { include_blank: '選択してください'}, { class: 'sign__input' , required: true } %>
             </div>
 
-              <%= f.fields_for :comments , class: "sign-email" do |i| %>
-                <%= i.label :content, "レビュー" %>
-                <%= i.text_area :content, size: "50x50", class: "share__review" %>
-                <%= i.hidden_field :user_id, value: @user.id %>
+            <div class="rate">
+              <label for="rate" style="margin-right: 30px;">
+                 評価
+              </label>
+              <%= image_tag  "/assets/rate_img.png", size: '140x50' %>
+            </div>
+
+
+              <%= f.fields_for :comments , class: "" do |i| %>
+                    <div class="sign-email">
+                      <%= i.label :title, "タイトル" %>
+                      <%= i.text_field :title, class:"sign__input sign__email" %>
+                    </div>
+
+            <div class="sign-email">
+                      <%= i.label :content, "レビュー" %>
+                      <%= i.text_area :content, size: "50x50", class: "share__review" %>
+                      <%= i.hidden_field :user_id, value: @user.id %>
               <% end %>
+            </div>
 
             <div class="btn-container-login">
               <%= f.submit "登録", class:"login-btn" %>
@@ -53,6 +68,25 @@
   </div>
 </main>
 
+
+
+
+<style media="screen">
+  .rate {
+    display: flex;
+    align-items: center;
+  }
+
+
+  .share__container__one {
+      border: 1px solid #bababa;
+      padding: 30px;
+      box-sizing: border-box;
+      overflow: hidden;
+      align-items: center;
+      display: flex;
+  }
+</style>
 
 <script type="text/javascript">
 $(function () {
