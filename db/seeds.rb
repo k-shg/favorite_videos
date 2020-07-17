@@ -85,6 +85,6 @@ end
 
 reviewers.each do |reviewer|
   posts.each do | post |
-    reviewer.comments.create!(content: Faker::Lorem.paragraph(sentence_count = 4), user_id: reviewer.id, post_id: post.id) if [true, false].sample
+    reviewer.comments.create!(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph(sentence_count = 4), user_id: reviewer.id, post_id: post.id) if [true, false].sample
   end
 end
