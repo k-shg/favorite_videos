@@ -1,29 +1,16 @@
-<div id="search">
-  <%= form_tag(search_users_path, method: :get, class: "form search__form", enforce_utf8: false) do %>
-        <div class="search__select-box">
-          <%= text_field_tag :search, @search_word, placeholder: "検索", class: "search__input" %>
+<div id="search__user">
+  <%= form_tag(search_users_path, method: :get, class: "search__form__user", enforce_utf8: false) do %>
+        <div class="search__user__select_box">
+          <%= text_field_tag :search, @search_word, placeholder: "キーワード [例:guest,taro,tanaka]", class: "search__input", style: "margin-left: 20px;" %>
         </div>
-        <div class="search__select-box">
-            カテゴリー：
-            <select name="category_id" class="search__select">
-                <option class="search__item" value="0">選択してください<span class="icon-select"></span></option>
-                <option value="">エンタメ</option>
-                <option value="">ビジネス</option>
-                <option value="">アニメ</option>
-            </select>
+        <div class="search__user__select_box">
+            <%= select_tag 'order', options_for_select([["投稿数が多い順", "1"], ["投稿数が少ない順", 2]], @order), { prompt: '表示順を選択', class: 'search__select search__select__user'}  %>
         </div>
-        <div class="search__select-box">
-            表示順：
-            <select name="order" class="search__select">
-                <option class="search__item" value="0" selected>選択してください</option>
-                <option class="search__item" value="1">いいねが多い順</option>
-                <option class="search__item" value="2">いいねが少ない順</option>
-            </select>
-        </div>
-      <%= button_to 'Search', class: "search__button" do %>
-        <i class="fas fa-search-plus"></i>
-        <span class="search__button-title">検索</span>
-      <% end %>
+
+          <%= button_to 'Search', class: "search__user__button" do %>
+            <i class="fas fa-search-plus"></i>
+          <% end %>
+
   <% end %>
 </div>
 <div class="horizon-container"></div>
@@ -42,3 +29,44 @@
   <%= render @users %>
 </section>
 <%= will_paginate %>
+
+
+
+<style media="screen">
+
+  .search__form__user {
+    border: 1px solid grey;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .search__select__user {
+
+    width: 177px;
+  }
+
+  .search__user__select_box {
+    float: left;
+    border-right: 1px solid #d5d5d8;
+  }
+  .search__user__select_box:first-child {
+    width: 74%;
+  }
+
+
+  .search__user__button {
+    -webkit-appearance: none;
+    width: 115px;
+    height: 44px;
+    transition: all .6s;
+    background: white;
+    border: none;
+    outline: none;
+    transition: .6s;
+  }
+  .search__user__button:hover {
+    transition: .6s;
+    color: skyblue;
+    transform: scale(1.1)
+  }
+</style>

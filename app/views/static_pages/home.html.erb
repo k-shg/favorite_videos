@@ -10,7 +10,7 @@
     みんなの投稿から動画を探そう！
   </div>
 
-  <div id="search">
+  <div id="search__video">
     <%= form_tag(search_posts_path, method: :get, class: "search__form", enforce_utf8: false) do %>
           <div class="search__select-box">
             <%= text_field_tag nil, @search_word, placeholder: "キーワード [例:嵐,イチロー,ドッキリ]", name: "search", class: "search__input" %>
@@ -24,7 +24,6 @@
           </div>
         <%= button_to 'Search', class: "search__button" do %>
           <i class="fas fa-search-plus"></i>
-          <span class="search__button-title">検索</span>
         <% end %>
     <% end %>
   </div>
