@@ -555,7 +555,7 @@ $gray-lighter: gray;
 ========================================*/
 
 
-#search {
+#search__video {
   width: 80%;
   margin: 0 auto;
 }
@@ -605,6 +605,7 @@ $gray-lighter: gray;
   box-sizing: border-box;
   border: none;
   border-right: 1px solid #d5d5d8;
+  background: transparent;
 }
 
 .search__input::placeholder {
@@ -630,6 +631,7 @@ $gray-lighter: gray;
 	transition: all .6s;
   background: skyblue;
   border: none;
+  outline: none;
 }
 
 .search__button:hover {
