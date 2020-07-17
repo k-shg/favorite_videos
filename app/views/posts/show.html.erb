@@ -1,45 +1,92 @@
 
-<h1 class="site-title"><%= @post.title %></h1>
-<section id="main" class="product">
-    <span class="product__category"><%= @category? @category: "未分類"; %></span>
-    <div class="product__img-container">
-        <iframe
-          class="product__img"
-          width="640"
-          height="360"
-          src="https://www.youtube.com/embed/<%= @post.youtube_url %>"
-          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-    </div>
-</section>
-<%= render 'layouts/video-info' %>
-<% if logged_in? %>
+<div class="video_container">
 
-  <%= form_for [@post, @comment], html: { class: "form-review" } do |f| %>
-    <%= f.text_area :content, class: "form-review__content" %>
-    <%= f.hidden_field :post_id, value: @post.id %>
-    <br>
-    <%= f.submit 'レビューする', class: "btn btn-mid" %>
+    <%= content_tag(:div,  class: "video_ribbon_wrapper") do %>
+      <h3 class="ribbon12"><span class="video__category"><%= @category? @category: "未分類"; %></span><%= @post.title %></h3>
+      <div class="product__img-container">
+          <iframe
+            class="video__img"
+            width="640"
+            height="360"
+            src="https://www.youtube.com/embed/<%= @post.youtube_url %>"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+      </div>
+      <%= content_tag(:div, @post.channel_title, class: "share__title_channel") %>
+    <% end %>
+</div>
+<%= render 'layouts/video-info' %>
+<section id="sidebar" class="sidebar-container">
+
+  <%= link_to user_path(@user), { class: "sidebar__link"} do %>
+
+    マイページ
   <% end %>
+  <%= link_to edit_user_path(@user), { class: "sidebar__link" } do %>
+
+    ユーザー設定
+  <% end %>
+
+  <span class="sidebar__link sidebar__link__review js_open">
+      動画を評価する
+  </span>
+
+  <%= link_to root_path, { class: "sidebar__link" } do %>
+
+    動画一覧
+  <% end %>
+
+</section>
+
+
+<% if logged_in? %>
+  <div class="form_review__container">
+    <details class="js_open_detail">
+      <summary><i class="far fa-edit"></i>レビューフォーム</summary>
+      <%= form_for [@post, @comment], html: { class: "form-review" } do |f| %>
+        <div class="content__container">
+          <%= f.text_field :title, class: "form_review__title", placeholder: "タイトルを入力してください" %>
+          <%= f.text_area :content, class: "form_review__content", placeholder: "本文を入力してください" %>
+        </div>
+
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <br>
+        <%= f.submit '登録する', class: "review__btn" %>
+      <% end %>
+    </details>
+  </div>
+
 <% end %>
 
-<section class="product-comment">
-  <div class="product-comment-container">
+
+  <div class="review__container">
     <div style="text-align:center;">レビュー一覧(<%= @post.comments.count %>レビュー)</div>
     <div class="review-count">
     </div>
       <% @comments.each do |c| %>
         <div class="review">
-          <div class="review__name-icon">
-            <%= content_tag(:div, c.user.name, class: 'review__name') %>
-            <% if c.user.image? %>
-               <%= image_tag c.user.image.thumb.url, size: '50x50' %>
-            <% else %>
-               <%= image_tag "/assets/default.png", size: '50x50' %>
-            <% end %>
+          <div class="icon_rate_container">
+            <div class="review__name-icon">
+              <%= content_tag(:div, c.user.name, class: 'review__name') %>
+              <% if c.user.image? %>
+                 <%= image_tag c.user.image.thumb.url, size: '50x50' %>
+              <% else %>
+                 <%= image_tag "/assets/default.png", size: '50x50' %>
+              <% end %>
+            </div>
+
+            <div class="review__rate__container">
+              <div class="rate">
+                <%= image_tag  "/assets/rate_img.png", size: '140x50' %>
+              </div>
+              <div class="review__title">
+                <%= c.title %>
+                ここにタイトルが入ります
+              </div>
+            </div>
           </div>
-          <div class="review__comment-container">
+          <div class="review__comment__container">
             <div class="review__comment">
               <%= c.content %>
             </div>
@@ -47,4 +94,243 @@
       </div>
     <% end %>
   </div>
-</section>
+
+
+
+<style media="screen">
+
+  .video_container {
+    position: relative;
+    margin-top: 30px;
+    float: left;
+    width: 820px;
+  }
+  .video_ribbon_wrapper {
+    display: block;
+    position: relative;
+    margin: 15px auto;
+    padding: 10px 0;
+    width: 96%;
+    box-shadow: 0 0 8px grey;
+  }
+
+  .video__category {
+    background: yellow;
+    color: black;
+    padding: 2px 6px;
+    margin: 0 3px;
+    font-size: 25px;
+    border-radius: 15px;
+  }
+
+  .video__img {
+    display: block;
+    width: 100%;
+    height: 360px;
+  }
+
+  .content__container {
+    height: 250px;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0 0 3px grey;
+  }
+  .form_review__container {
+    float: right;
+    width: 100%;
+  }
+
+  .form_review__content {
+    margin: 10px 0;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 166px;
+    font-size: 18px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+
+  .form_review__title {
+    width: 100%;
+    padding: 10px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #999;
+  }
+
+  details {
+    font-weight: bold;
+    text-align: center;
+
+  }
+
+  details > summary {
+    width: 300px;
+    margin: 12px auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .7s;
+    background: black;
+    color: white;
+  }
+
+  details > summary:hover {
+    transform: scale(1.1);
+    transition: all .7s;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+
+.icon_rate_container {
+    padding: 10px;
+    display: flex;
+}
+
+  .review__container {
+    padding: 20px;
+    width: 100%;
+    display: block;
+    float: left;
+    margin: 20px 0;
+    box-sizing: border-box;
+  }
+
+
+  .review {
+    box-sizing: border-box;
+    border-radius: 100px;
+    margin: 30px auto;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 17px 0px;
+    transition: .6s;
+  }
+
+   .review:hover {
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 8px 17px 0px;
+    background: #eee;
+    transition: .6s;
+
+  }
+
+  .review__rate__container {
+    margin: 10px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+  }
+
+  .review__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .review__comment__container {
+    padding: 5px;
+    overflow: hidden;
+    padding: 8px 15px 15px 25px;
+  }
+
+  .review__comment {
+    word-wrap: break-word;
+    padding: 0 10px 10px 10px;
+    color: #000;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .review__btn {
+    background: skyblue;
+    transition: all .7s;
+    display: block;
+    width: 30%;
+    margin: 10px auto;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 15px;
+    font-size: 23px;
+  }
+  .review__btn:hover  {
+    color: white;
+    transition: all .7s;
+    transform: scale(1.05);
+    text-decoration: none;
+  }
+
+
+
+
+  .sidebar-container {
+    margin-top: 20px;
+    margin-right: 3px;
+    float: right;
+    min-height: 200px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 0 3px grey;
+    width: 300px;
+
+  }
+
+  .sidebar__link {
+    border-bottom: 1px dotted grey;
+    display: block;
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+  }
+
+  .sidebar__link__review {
+    color: #337ab7;;
+  }
+
+  .sidebar__link__review:hover {
+    color: #fff;
+  }
+
+
+  .sidebar__link:hover {
+    color: #fff;
+    /* transform: scale(1.1); */
+    text-decoration: none;
+    background-color: skyblue;
+    color: white;
+    transition: .6s;
+  }
+}
+</style>
+
+
+<script type="text/javascript">
+
+  console.log(111)
+
+  var open_flg = 0;
+
+
+  $('.js_open').on('click', function() {
+    console.log('クリックした')
+    if(!open_flg) {
+      console.log(open_flg)
+      $('.js_open_detail').attr('open', true);
+      open_flg = 1;
+    } else {
+        console.log(open_flg)
+      $('.js_open_detail').attr('open', false);
+      open_flg = 0;
+    }
+
+
+  })
+
+
+</script>

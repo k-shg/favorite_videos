@@ -193,7 +193,7 @@
   width: calc(100% + 20px);
   font-size: 16px;
   color: white;
-  background: #70a6ff;
+  background: skyblue;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 	margin-bottom: 15px;
 }
@@ -282,9 +282,9 @@ p.comment {
 
 
 .review {
-	display: flex;
- justify-content: space-between;
-	align-items: center;
+	// display: flex;
+ // justify-content: space-between;
+	// align-items: center;
 }
 
 .review__name-icon {
@@ -300,20 +300,20 @@ p.comment {
 
 
 .review__comment-container {
-	padding: 5px;
-	overflow: hidden;
-	width: 700px;
-	margin: 20px;
-	border: 2px #999 solid;
-	background-color: #f7f7f7;
+// 	padding: 5px;
+// 	overflow: hidden;
+// 	width: 700px;
+// 	margin: 20px;
+// 	border: 2px #999 solid;
+// 	background-color: #f7f7f7;
 }
 
 .review__comment {
-	word-wrap: break-word;
-	padding: 10px;
-	color: #000;
-	font-size: 14px;
-	box-sizing: border-box;
+	// word-wrap: break-word;
+	// padding: 10px;
+	// color: #000;
+	// font-size: 14px;
+	// box-sizing: border-box;
 }
 
 

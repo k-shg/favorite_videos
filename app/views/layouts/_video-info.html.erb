@@ -1,10 +1,13 @@
-<section id="sidebar" class="video-info-container">
+<section id="sidebar" class="video__info__container">
+
+  <div class="video__info__title">動画情報</div>
+
   <% if logged_in? %>
     <div class="like-edit">
       <% if current_user.already_liked?(@post) %>
-        <%= button_to 'いいね', post_like_path(@post), method: :delete, class: "btn unlike" %>
+        <%= button_to 'いいね', post_like_path(@post), method: :delete, class: "video__info__unlike" %>
       <% else %>
-        <%= button_to 'いいね', post_likes_path(@post), class: "btn btn-primary like" %>
+        <%= button_to 'いいね', post_likes_path(@post), class: "video__info__like" %>
       <% end %>
     </div>
   <% end %>
@@ -25,4 +28,74 @@
       <% end %>
     </div>
   </div>
+
+  <div class="total__rate__container">
+    <div class="total__rate__title">総合評価</div>
+    <div class="total__rate">
+        <%= image_tag  "/assets/rate_img.png", size: '140x50' %>
+    </div>
+  </div>
 </section>
+
+
+
+<style media="screen">
+  .video__info__container {
+    margin-top: 43px;
+    float: right;
+    min-height: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 0 3px grey;
+    width: 300px;
+    margin-right: 2;
+    margin-right: 2px;
+  }
+
+  .video__info__title {
+    margin-bottom: 10px;
+    border-bottom: 1px solid skyblue;
+    font-size: 14px;
+  }
+
+  .video__info__like {
+    width: 150px;
+    margin: 12px auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .7s;
+    background: #eee;
+    color: black;
+  }
+  .video__info__unlike {
+    width: 150px;
+    margin: 12px auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .7s;
+    background: black;
+    color: white;
+  }
+
+  .video__info__like:hover{
+    width: 150px;
+    margin: 12px auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .7s;
+    background: black;
+    color: white;
+  }
+
+
+  .video__info__unlike:hover {
+    width: 150px;
+    margin: 12px auto;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .7s;
+    background: #eee;
+    color: black;
+  }
+</style>
