@@ -72,7 +72,7 @@ class PostsController < ApplicationController
  private
 
    def post_params
-     params.require(:post).permit(:youtube_url, :category_id, :order, comments_attributes:[:title, :content, :user_id])
+     params.require(:post).permit(:youtube_url, :category_id, :order, comments_attributes:[:title, :content, :user_id, :rate])
    end
 
 end

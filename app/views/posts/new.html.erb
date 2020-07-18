@@ -1,3 +1,4 @@
+
 <main id="contents" class="site-width">
   <div class="share__container__one">
     <div class="signup-container">
@@ -16,24 +17,39 @@
               <%= f.select :category, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]) , { include_blank: '選択してください'}, { class: 'sign__input' , required: true } %>
             </div>
 
-            <div class="rate">
-              <label for="rate" style="margin-right: 30px;">
-                 評価
-              </label>
-              <%= image_tag  "/assets/rate_img.png", size: '140x50' %>
-            </div>
-
-
-              <%= f.fields_for :comments , class: "" do |i| %>
-                    <div class="sign-email">
-                      <%= i.label :title, "タイトル" %>
-                      <%= i.text_field :title, class:"sign__input sign__email" %>
-                    </div>
+            <%= f.fields_for :comments , class: "" do |i| %>
 
             <div class="sign-email">
-                      <%= i.label :content, "レビュー" %>
-                      <%= i.text_area :content, size: "50x50", class: "share__review" %>
-                      <%= i.hidden_field :user_id, value: @user.id %>
+              <div class="rate">
+                  <%= i.label :rate, '評価' %>
+                  <div class="rate__star " id="js__star">
+                      <%= i.hidden_field :rate  %>
+                  </div>
+
+                <script>
+                    $('#js__star').raty({
+                        size     : 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn : '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        scoreName: 'post[comments_attributes][0][rate]',
+                        half: true,
+                    });
+                </script>
+              </div>
+            </div>
+
+            <div class="sign-email">
+
+              <%= i.label :title, "タイトル" %>
+              <%= i.text_field :title, class:"sign__input sign__email" %>
+            </div>
+
+            <div class="sign-email">
+                  <%= i.label :content, "レビュー" %>
+                  <%= i.text_area :content, size: "50x50", class: "share__review" %>
+                  <%= i.hidden_field :user_id, value: @user.id %>
+
               <% end %>
             </div>
 
@@ -42,6 +58,7 @@
             </div>
 
             <% end %>
+
     </div>
 
 
@@ -77,6 +94,9 @@
     align-items: center;
   }
 
+  .rate__star {
+    margin-left: 10px;
+  }
 
   .share__container__one {
       border: 1px solid #bababa;
@@ -85,6 +105,10 @@
       overflow: hidden;
       align-items: center;
       display: flex;
+  }
+
+  #post_category > option:nth-child(1) {
+    color: red;
   }
 </style>
 

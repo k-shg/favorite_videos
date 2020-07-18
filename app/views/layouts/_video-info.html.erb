@@ -32,7 +32,13 @@
   <div class="total__rate__container">
     <div class="total__rate__title">総合評価</div>
     <div class="total__rate">
-        <%= image_tag  "/assets/rate_img.png", size: '140x50' %>
+      <div class="video__info__rate">
+        <div id="star-rate"></div>
+        <div class="rate__number">
+          <%= @comments.average(:rate).to_f.round(1) %>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -98,4 +104,44 @@
     background: #eee;
     color: black;
   }
+
+  .total__rate__container {
+    height: 70px;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .star-rate-1 {
+    /* width: 100px;
+    height: 20px; */
+  }
+
+  .rate__number {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .video__info__rate {
+    margin: 10px;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
 </style>
+
+<script>
+
+  $('#star-rate').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= @comments.average(:rate) %>,
+  });
+</script>

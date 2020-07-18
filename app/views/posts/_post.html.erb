@@ -1,4 +1,4 @@
-<%= link_to post_path(post), { class: "panel panel-index" } do %>
+<%= link_to post_path(post), class: "panel panel-index", data: { turbolinks: false } do %>
   <div class="panel__head">
     <%= image_tag("https://img.youtube.com/vi/#{post.youtube_url}/mqdefault.jpg", class: "panel__img") %>
     <div class="panel-cover">
