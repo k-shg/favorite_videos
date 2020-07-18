@@ -18,6 +18,8 @@
 </div>
 <%= render 'layouts/video-info' %>
 
+
+<% if logged_in? %>
 <section id="sidebar" class="sidebar-container">
   <%= link_to user_path(@user), { class: "sidebar__link"} do %>
     マイページ
@@ -34,7 +36,6 @@
 </section>
 
 
-<% if logged_in? %>
   <div class="form_review__container">
     <details class="js_open_detail">
       <summary><i class="far fa-edit"></i>レビューフォーム</summary>
