@@ -33,9 +33,15 @@
     <div class="total__rate__title">総合評価</div>
     <div class="total__rate">
       <div class="video__info__rate">
-        <div id="star-rate"></div>
+        <% unless @comments.blank? %>
+          <div id="star-rate"></div>
+        <% end %>
         <div class="rate__number">
+          <% if @comments.blank? %>
+          なし
+          <% else %>
           <%= @comments.average(:rate).to_f.round(1) %>
+          <% end %>
         </div>
 
       </div>
