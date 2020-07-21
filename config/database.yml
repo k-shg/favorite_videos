@@ -10,7 +10,7 @@ default: &default
   database: vidos_development
   pool: 5
   username: root
-  password: 
+  password:
   socket: /tmp/mysql.sock
 
 development:
@@ -30,4 +30,4 @@ test:
 production:
 #半角スペース２個分の空白を開ける
   <<: *default
-  database: vidos_productionr
+  database: vidos_production
