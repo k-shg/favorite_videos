@@ -1,10 +1,11 @@
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: password # docker-compose.ymlのMYSQL_ROOT_PASSWORD
-  host: db # docker-compose.ymlのservice名
+  host: <%= ENV.fetch("DB_HOST") { 'localhost' } %>
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -12,8 +13,8 @@ development:
 
 test:
   <<: *default
-  port: 3306
-  host: '127.0.0.1'
+  # port: 3306
+  # host: '127.0.0.1'
   database: favorite_videos_test
 
 production:
