@@ -41,40 +41,114 @@ $gray-lighter: gray;
       ヘッダー
 ===================================  */
 .header {
-    // background: #013156;
     width: 100%;
-    //height: 80px;
+    height: 80px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__title {
+      line-height: 80px;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 0;
+      &__sub {
+        margin-top: 10px;
+        margin-bottom: -20px;
+        opacity: 0.4;
+        font-size: 13px;
+      }
+    }
+    &__link {
+      font-size: 25px;
+      color: black;
+      text-decoration: none;
+      transition: all .7s;
+      &:hover {
+        color: skyblue;
+        transition: all .7s;
+        transform: scale(1.1);
+        text-decoration: none;
+      }
+    }
+  }
+
+
+
+
+/* ==================================
+      ナビゲーション
+===================================  */
+
+.nav {
+  &__mypage {
+    transition: all 0.6s;
+    &:hover {
+      color: skyblue;
+      transition: all 0.6s;
+      transform: scale(1.1);
+    }
+  }
+  &__menu {
+    line-height: 80px;
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  &__link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    background: #f6f5f4;
+    &:hover {
+      color: white;
+      background: skyblue;
+    }
+  }
+  &__icon {
+      cursor: pointer;
+  }
+  &__child {
+    overflow: hidden;
+    width: 120px;
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 10px;
+    top: 60px;
+    right: 0%;
+    background-color: #fff;
+    box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    text-align: left;
+
+    &_link {
+      display: block;
+      text-decoration: none;
+      height: 30px;
+      line-height: 30px;
+      font-size: 12px;
+      transition: .6s;
+      padding-left: 7px;
+      
+      &:hover {
+        text-decoration: none;
+        background-color: skyblue;
+        color: white;
+        transition: .6s;
+      }
+    }
+  }
 }
 
-.header__title {
-  line-height: 80px;
-  float: left;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0;
-}
-
-.header__link {
-  font-size: 25px;
-  color: black;
-  text-decoration: none;
-	transition: all .7s;
-}
-.header__link:hover {
-  color: skyblue;
-	transition: all .7s;
-	transform: scale(1.1);
-  text-decoration: none;
-}
 
 
-.header__title_sub {
-  margin-top: 10px;
-  margin-bottom: -20px;
-  opacity: 0.4;
-  font-size: 13px;
+.nav__menu__left {
+  margin-right: 15px;
 }
+
 
 /* ==================================
       ヒーロー画像
@@ -114,85 +188,6 @@ $gray-lighter: gray;
 }
 
 
-
-/* ==================================
-      ナビゲーション
-===================================  */
-
-.nav {
-    /* margin-right: 230px; */
-}
-
-
-.nav__menu {
-  line-height: 80px;
-  list-style: none;
-  position: relative;
-}
-
-.nav__menu-item  {
-  float: right;
-  margin: 0 10px;
-  border: 2px solid skyblue;
-  padding: 5px;
-}
-
-.nav__link {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-	background: #f6f5f4;
-}
-.nav__link:hover {
-  color: white;
-	background: skyblue;
-}
-
-.nav_icon {
-  float: right;
-  cursor: pointer;
-}
-.nav_link {
-  float: right;
-}
-
-.nav_mypage {
-  line-height: 80px;
-}
-
-.nav_child {
-  overflow: hidden;
-  width: 10%;
-  display: none;
-  position: absolute;
-  border: 1px solid black;
-  border-radius: 10px;
-  top: 48px;
-  right: 0%;
-  background-color: #fff;
-  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
-  z-index: 3;
-  text-align: left;
-
-  &_link {
-    display: block;
-    text-decoration: none;
-    height: 30px;
-    line-height: 30px;
-    //border-bottom: 1px solid black;
-    font-size: 12px;
-    transition: .6s;
-    padding-left: 7px;
-  }
-  &_link:hover {
-    text-decoration: none;
-    background-color: skyblue;
-    color: white;
-    transition: .6s;
-  }
-}
-
-
 /* ==================================
       レイアウト
 ===================================  */
@@ -201,6 +196,7 @@ $gray-lighter: gray;
   width: 1140px;
   margin: 0 auto;
 }
+
 .main-container {
   overflow: hidden;
   z-index: 2;
