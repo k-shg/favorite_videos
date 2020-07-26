@@ -123,6 +123,7 @@ $gray-lighter: gray;
     box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.2);
     z-index: 3;
     text-align: left;
+
     &_link {
       display: block;
       text-decoration: none;
@@ -131,12 +132,13 @@ $gray-lighter: gray;
       font-size: 12px;
       transition: .6s;
       padding-left: 7px;
-    }
-    &_link:hover {
-      text-decoration: none;
-      background-color: skyblue;
-      color: white;
-      transition: .6s;
+      
+      &:hover {
+        text-decoration: none;
+        background-color: skyblue;
+        color: white;
+        transition: .6s;
+      }
     }
   }
 }

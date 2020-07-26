@@ -4,9 +4,7 @@
     <div class="signup-container">
       　<div class="site-title underline">動画を共有する</div>
 
-
           <%= form_for @post,  html: { method: "post", class: "", enforce_utf8: false } do |f| %>
-
             <div class="sign-email">
               <%= f.label :youtube_url, "動画URL", class: "sign__label" %>
               <%= f.text_field :youtube_url, placeholder: "例 [https://www.youtube.com/watch?v=v8VYiwwbHAI]", class: "js_get_url sign__input" %>
@@ -14,7 +12,7 @@
 
             <div class="form-group sign-email">
               <%= f.label :category, 'カテゴリー' %>
-              <%= f.select :category, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]) , { include_blank: '選択してください'}, { class: 'sign__input' , required: true } %>
+              <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]) , { include_blank: '選択してください'}, { class: 'sign__input' , required: true } %>
             </div>
 
             <%= f.fields_for :comments , class: "" do |i| %>
@@ -28,7 +26,7 @@
 
                 <script>
                     $('#js__star').raty({
-                        size     : 36,
+                        size   : 36,
                         starOff:  '<%= asset_path('star-off.png') %>',
                         starOn : '<%= asset_path('star-on.png') %>',
                         starHalf: '<%= asset_path('star-half.png') %>',
