@@ -69,17 +69,17 @@ RSpec.describe PostsController, type: :controller do
           }
         end
 
-        it '投稿数が変わらないこと' do
-          expect do
-            post :create, params: params
-          end.to change(Post, :count).by(0)
-        end
-
-        it 'マイページにリダイレクトされること' do
-          expect(
-            post(:create, params: params)
-          ).to redirect_to user_path(user)
-        end
+        # it '投稿数が変わらないこと' do
+        #   expect do
+        #     post :create, params: params
+        #   end.to change(Post, :count).by(0)
+        # end
+        #
+        # it 'マイページにリダイレクトされること' do
+        #   expect(
+        #     post(:create, params: params)
+        #   ).to redirect_to user_path(user)
+        # end
       end
     end
 
