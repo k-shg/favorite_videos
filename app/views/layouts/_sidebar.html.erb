@@ -1,26 +1,9 @@
 <section id="sidebar" class="sidebar-container">
-
-  <%= link_to user_path(@user), { class: "sidebar__link"} do %>
-
-    マイページ
-  <% end %>
-  <%= link_to edit_user_path(@user), { class: "sidebar__link" } do %>
-
-    ユーザー設定
-  <% end %>
-  <%= link_to new_post_path, { class: "sidebar__link" } do %>
-
-    動画を共有する
-  <% end %>
-  <%= link_to users_path, { class: "sidebar__link" } do %>
-
-    ユーザー一覧
-  <% end %>
-  <%= link_to logout_path, { class: "sidebar__link", method: "delete"} do %>
-
-    ログアウト
-  <% end %>
-
+  <%= link_to "マイページ", user_path(@user), { class: "sidebar__link"} %>
+  <%= link_to "ユーザー設定", edit_user_path(current_user), { class: "sidebar__link" } %>
+  <%= link_to "動画を共有する", new_post_path, { class: "sidebar__link" , data: { turbolinks: false } } %>
+  <%= link_to "ユーザー一覧", users_path, { class: "sidebar__link" } %>
+  <%= link_to "ログアウト", logout_path, { class: "sidebar__link", method: "delete"} %>
 </section>
 
 

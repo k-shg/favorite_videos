@@ -1,33 +1,22 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: mysql2
   encoding: utf8
-  database: vidos_development
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: password # docker-compose.ymlのMYSQL_ROOT_PASSWORD
+  host: db # docker-compose.ymlのservice名
 
 development:
   <<: *default
-  #database: db/development.sqlite3
+  database: favorite_videos_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: vidos_test
+  database: favorite_videos_test
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
 production:
-#半角スペース２個分の空白を開ける
   <<: *default
-  database: vidos_production
+  host: <%= Rails.application.credentials.rds[:host] %>
+  database: <%= Rails.application.credentials.rds[:database] %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>
