@@ -1,26 +1,26 @@
 version: '3'
 services:
+  app:
+    build: .
+    volumes:
+      - ~/git/github/favorite_videos:/var/www/app/
+      - gem_data:/usr/local/bundle
+    ports:
+      - "80:80"
+    links:
+      - db
+    environment:
+      RAILS_ENV: development
   db:
     image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
     ports:
-      - "4306:3306"
+      - "3306:3306"
 
-  web:
-    build: .
-    command: rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/app_name
-            # 1. exclude volumes
-      - /app/vendor
-      - /app/tmp
-      - /app/log
-      - /app/.git
-    ports:
-      - "80:3000"
-    links:
-      - db
-    environment:
-      RAILS_ENV: production
+volumes:
+  gem_data:
+  mysql_data:

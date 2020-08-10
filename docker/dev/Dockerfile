@@ -1,17 +1,30 @@
 FROM ruby:2.7.1
 
-# 必要なパッケージのインストール（基本的に必要になってくるものだと思うので削らないこと）
+RUN mkdir /app
+ENV APP_ROOT /app
+ENV TZ Asia/Tokyo
+
+WORKDIR $APP_ROOT
+
+# 必要なパッケージのインストール
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
                        libpq-dev \
-                       nodejs
-RUN mkdir /app_name
+                       nodejs \
+                       nginx \
+                       tzdata \
+                       vim \
+                       supervisor && \
+                       apt-get clean -y && \
+                       rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+# nginx
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/dev.favorite_videos.com.conf /etc/nginx/conf.d/dev.favorite_videos.com.conf
 
-ENV APP_ROOT /app_name
-WORKDIR $APP_ROOT
 
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
-RUN bundle install
-ADD . $APP_ROOT
+# supervisor
+COPY supervisor/app.conf /etc/supervisor/conf.d/app.conf
+
+# Service to run
+CMD [ "/usr/bin/supervisord" ]
