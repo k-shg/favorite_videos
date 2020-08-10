@@ -18,7 +18,11 @@ RUN apt-get update -qq && \
                        apt-get clean -y && \
                        rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 # nginx
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/dev.favorite_videos.com.conf /etc/nginx/conf.d/dev.favorite_videos.com.conf
+
+
+
 # supervisor
 COPY supervisor/app.conf /etc/supervisor/conf.d/app.conf
 
