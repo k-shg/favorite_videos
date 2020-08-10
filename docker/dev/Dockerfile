@@ -2,6 +2,8 @@ FROM ruby:2.7.1
 
 RUN mkdir /app
 ENV APP_ROOT /app
+ENV TZ Asia/Tokyo
+
 WORKDIR $APP_ROOT
 
 # 必要なパッケージのインストール
@@ -10,6 +12,7 @@ RUN apt-get update -qq && \
                        libpq-dev \
                        nodejs \
                        nginx \
+                       tzdata \
                        vim \
                        supervisor && \
                        apt-get clean -y && \
