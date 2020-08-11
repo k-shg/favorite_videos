@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "ap-northeast-1"
-  profile = "my-profile"
+  profile = "prd-favorite-videos"
 }
 
 
@@ -13,6 +13,6 @@ terraform {
     region  = "ap-northeast-1"
     bucket = "bkt-terraform"
     key = "terraform.tfstate"
-    profile = "my-profile"
+    profile = "prd-favorite-videos"
   }
 }
