@@ -18,8 +18,8 @@ resource "aws_security_group" "favorite_videos" {
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 2222
+    to_port     = 2222
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
