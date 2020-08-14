@@ -1,0 +1,5 @@
+- name: include tasks/log.yml
+  include_tasks: tasks/log.yml
+
+- name: include tasks/ping.yml
+  include_tasks: tasks/ping.yml

@@ -1,5 +1,3 @@
 - hosts: servers
-  remote_user: ansibleman
-  tasks:
-    - name: Write date
-      shell: date >> ansible.log
+  roles:
+    - common
