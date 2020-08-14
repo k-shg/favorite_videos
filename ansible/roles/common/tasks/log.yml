@@ -1,2 +1,0 @@
-- name: Write date
-  shell: date >> ansible.log
