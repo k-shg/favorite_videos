@@ -5,12 +5,15 @@
   yum: name=nginx state=latest
 
 - name: Set nginx service to start on boot
-  service: name=nginx state=started enabled=true
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
 
-- name: Put nginx.conf
+- name: Copy nginx.conf
   template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf backup=true mode=0644
   notify: restart nginx
 
-- name: Put prd.favorite_videos.com.conf
-  template: src=templates/prd.favorite_videos.com.conf dest=/etc/nginx/conf.d/ backup=true mode=0644
+- name: Copy favorite_videos.com.conf
+  template: src=templates/favorite_videos.com.conf dest=/etc/nginx/conf.d/ backup=true mode=0644
   notify: restart nginx

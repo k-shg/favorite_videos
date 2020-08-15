@@ -1,4 +1,4 @@
 - hosts: servers
-  become: yes
   roles:
+    - common
     - nginx
