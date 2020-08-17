@@ -32,7 +32,3 @@
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password('{{ password_mysql }}');"
   when: install_mysql.changed != false
-
-- name: delete /root/.my.cnf
-  file: name=/root/.my.cnf  state=absent
-  when: install_mysql.changed != false

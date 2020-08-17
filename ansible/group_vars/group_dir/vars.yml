@@ -1,1 +1,1 @@
-password_mysql: " {{ vault_password_mysql }}"
+password_mysql: "{{ vault_password_mysql }}"
