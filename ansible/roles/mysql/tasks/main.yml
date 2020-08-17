@@ -3,25 +3,14 @@
     state: present
     name: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
     validate_certs: no
+  register: install_mysql
 
 - name: install necessary libraries
   yum:
     state: present
     name:
-    - yum-utils
-    - MySQL-python
-    - mysql-community-server
     - mysql-devel
     - mysql-server
-    - mysql-utilities
-
-- name: deploy .my.cnf
-  template:
-    src: templates/my.cnf
-    dest: /root/.my.cnf
-    owner: root
-    group: root
-  register: mycnf_file
 
 - name: running mysqld
   systemd:
@@ -32,18 +21,18 @@
 - name: get temporary password
   shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
   register: mysql_default_password
-  when: mycnf_file.changed != false
+  when: install_mysql.changed != false
 
 - name: change password validation to the easy way
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "SET GLOBAL validate_password_policy=LOW;"
-  when: mycnf_file.changed != false
+  when: install_mysql.changed != false
 
 - name: change root user password
   shell: |
     mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password('{{ password_mysql }}');"
-  when: mycnf_file.changed != false
+  when: install_mysql.changed != false
 
 - name: delete /root/.my.cnf
   file: name=/root/.my.cnf  state=absent
-  when: mycnf_file.changed != false
+  when: install_mysql.changed != false
