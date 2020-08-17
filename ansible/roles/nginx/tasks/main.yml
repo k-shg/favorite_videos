@@ -1,6 +1,3 @@
-- name: "install-gcc"
-  action: yum pkg=gcc state=installed
-
 - name: Install nginx
   yum: name=nginx state=latest
 
