@@ -11,9 +11,8 @@
     enabled: yes
 
 - name: Copy nginx.conf
-  template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf backup=true mode=0644
-  notify: restart nginx
+  template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf mode=0644
 
 - name: Copy favorite_videos.com.conf
-  template: src=templates/favorite_videos.com.conf dest=/etc/nginx/conf.d/ backup=true mode=0644
+  template: src=templates/favorite_videos.com.conf dest=/etc/nginx/conf.d/ mode=0644
   notify: restart nginx
