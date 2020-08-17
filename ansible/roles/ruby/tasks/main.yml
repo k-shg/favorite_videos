@@ -1,0 +1,32 @@
+- name: git clone rbenv
+  git:
+    repo: https://github.com/sstephenson/rbenv.git
+    dest: /usr/local/rbenv/
+
+- name: git clone ruby-build
+  git:
+    repo: https://github.com/sstephenson/ruby-build.git
+    dest: /usr/local/rbenv/plugins/ruby-build/
+
+- name: insert/update /etc/profile env
+  blockinfile:
+    path: /etc/profile
+    block: |
+     export RBENV_ROOT="/usr/local/rbenv"
+     export PATH="${RBENV_ROOT}/bin:${PATH}"
+     eval "$(rbenv init --no-rehash -)"
+
+- name: source /etc/profile
+  shell: bash -lc "source /etc/profile"
+
+- name: rbenv install -v 2.7.1
+  shell: bash -lc "/usr/local/rbenv/bin/rbenv install --skip-existing -v 2.7.1"
+  ignore_errors: yes
+
+- name: rbenv rehash
+  shell: bash -lc "/usr/local/rbenv/bin/rbenv rehash"
+  ignore_errors: yes
+
+- name: rbenv global 2.7.1
+  shell: bash -lc "/usr/local/rbenv/bin/rbenv global 2.7.1"
+  ignore_errors: yes

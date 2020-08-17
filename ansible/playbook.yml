@@ -1,3 +1,9 @@
 - hosts: servers
+  vars_files:
+    - group_vars/group_dir/vars.yml
+    - group_vars/group_dir/vault.yml
   roles:
     - common
+    - nginx
+    - mysql
+    - ruby

@@ -1,0 +1,34 @@
+- name: install mysql repository
+  yum:
+    state: present
+    name: http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+    validate_certs: no
+  register: install_mysql
+
+- name: install necessary libraries
+  yum:
+    state: present
+    name:
+    - mysql-devel
+    - mysql-server
+
+- name: running mysqld
+  systemd:
+    name: mysqld
+    state: started
+    enabled: yes
+
+- name: get temporary password
+  shell: cat /var/log/mysqld.log | grep "temporary password" | awk '{print $11}'
+  register: mysql_default_password
+  when: install_mysql.changed != false
+
+- name: change password validation to the easy way
+  shell: |
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "SET GLOBAL validate_password_policy=LOW;"
+  when: install_mysql.changed != false
+
+- name: change root user password
+  shell: |
+    mysql -u root -p'{{ mysql_default_password.stdout }}' --connect-expired-password -e "set password for root@'localhost'=password('{{ password_mysql }}');"
+  when: install_mysql.changed != false

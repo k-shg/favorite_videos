@@ -1,2 +1,5 @@
 - name: include tasks/ping.yml
   include_tasks: tasks/ping.yml
+
+- name: include tasks/base-packages.yml
+  include_tasks: tasks/base-packages.yml
