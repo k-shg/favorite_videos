@@ -1,0 +1,5 @@
+username_github: "{{ vault_username_github }}"
+password_github:  "{{ vault_password_github }}"
+password_mysql: " {{ vault_password_mysql }}"
+
+repo_name: favorite_videos

@@ -34,5 +34,5 @@
 
 - name: git clone favorite_videos
   git:
-    repo: "https://{{ user_name }}:{{ password }}@github.com/{{ user_name }}/favorite_videos.git"
+    repo: "https://{{ username_github }}:{{ password_github }}@github.com/{{ username_github }}/favorite_videos.git"
     dest: /var/www/app/

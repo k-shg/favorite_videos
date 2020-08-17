@@ -1,14 +1,9 @@
 - hosts: servers
-  vars:
-   repo_name: favorite_videos
-  vars_prompt:
-    -  name: "user_name"
-       prompt: "Please Enter Your ID of Github"
-       private: no
-    -  name: "password"
-       prompt: "Please Enter Your Password of Github"
-       private: no
+  vars_files:
+    - group_vars/group_dir/vars.yml
+    - group_vars/group_dir/vault.yml
   roles:
     - common
     - nginx
+    - mysql
     - ruby
