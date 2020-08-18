@@ -1,0 +1,15 @@
+- name: check if nodejs already installed
+  stat:
+    path: /usr/local/bin/node
+  register: nodejs_bin
+
+- name: download and setup nodejs source
+  shell: |
+    curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+  when: not nodejs_bin.stat.exists
+
+- name: install latest nodejs
+  yum:
+    name: nodejs
+    state: present
+  when: not nodejs_bin.stat.exists
