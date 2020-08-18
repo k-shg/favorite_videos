@@ -3,8 +3,8 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: password # docker-compose.ymlのMYSQL_ROOT_PASSWORD
-  host: db # docker-compose.ymlのservice名
+  password: password
+  host: db
 
 development:
   <<: *default
@@ -16,7 +16,5 @@ test:
 
 production:
   <<: *default
-  host: <%= Rails.application.credentials.rds[:host] %>
-  database: <%= Rails.application.credentials.rds[:database] %>
-  username: <%= Rails.application.credentials.rds[:username] %>
-  password: <%= Rails.application.credentials.rds[:password] %>
+  host: localhost
+  database: favorite_videos_production
