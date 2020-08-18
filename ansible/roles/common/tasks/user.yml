@@ -1,0 +1,32 @@
+- name: create group ansibleman
+  group:
+    name: ansibleman
+    state: present
+
+- name: create user ansibleman
+  user:
+    name: ansibleman
+    state: present
+    group: ansibleman
+    shell: /bin/bash
+
+- file:
+    path: /home/ansibleman/.ssh
+    owner: ansibleman
+    group: ansibleman
+    state: directory
+    mode: 0700
+
+- name: set public key to login ansibleman
+  authorized_key:
+    user: ansibleman
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+- name: add ansibleman to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    backup: yes
+    state: present
+    regexp: '^ansibleman'
+    line: 'ansibleman ALL=(ALL) NOPASSWD: ALL'
