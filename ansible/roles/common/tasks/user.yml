@@ -1,32 +1,25 @@
-- name: create group ansibleman
-  group:
-    name: ansibleman
-    state: present
-
-- name: create user ansibleman
+- name: create user user
   user:
-    name: ansibleman
+    name: "{{ item }}"
     state: present
-    group: ansibleman
+    group: wheel
     shell: /bin/bash
+  loop:
+    - ansibleman
 
-- file:
-    path: /home/ansibleman/.ssh
-    owner: ansibleman
-    group: ansibleman
-    state: directory
-    mode: 0700
-
-- name: set public key to login ansibleman
+- name: set public key to login user
   authorized_key:
-    user: ansibleman
+    user: "{{ item }}"
     state: present
-    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMhZb58k/OzN89Hvw6bMtvwtO5ATRcFwQmqVKGNz2FVACE2hkJgNZfNzeW+FiWGojJoP+5XeEBxnh0EMZg/lFO5wByI+++bFrXX11LOyOIrx281jxzRz20h/L9jhrGNqrXHohVnj0UZzUjiVdCeETquOpQF2MAnzeOrrWDi2poz9x5avSOb4jV9aHbtgz7PtAlZJr7bwGTMzWdCfVkvCE3EsavxhWExudHuqD7Y7SY404SUrDZNWF8o1yGtXTF0Fjr+R39jZaHxVargf7ZZbHc79uhE1RqUREf2HEIvNTnCP0ePmkO1RbL6/bGF4HzowC6+3EHATKfB8fqvehb/3Ul shogo@shogonoMacBook-Air.local"
+  loop:
+    - ansibleman
 
-- name: add ansibleman to sudoers
+- name: add user to sudoers
   lineinfile:
     dest: /etc/sudoers
-    backup: yes
     state: present
-    regexp: '^ansibleman'
-    line: 'ansibleman ALL=(ALL) NOPASSWD: ALL'
+    regexp: "^{{ item }}"
+    line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
+  loop:
+    - ansibleman
