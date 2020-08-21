@@ -8,13 +8,13 @@ default: &default
 
 development:
   <<: *default
-  database: favorite_videos_development
+  database: <%= ENV["DATABASE_DEV"] %>
 
 test:
   <<: *default
-  database: favorite_videos_test
+  database: <%= ENV["DATABASE_TEST"] %>
 
 production:
   <<: *default
   host: <%= ENV["DATABASE_HOST_PRD"] %>
-  database: favorite_videos_production
+  database: <%= ENV["DATABASE_PRD"] %>
