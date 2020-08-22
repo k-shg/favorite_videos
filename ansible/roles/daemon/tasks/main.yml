@@ -1,0 +1,8 @@
+- name: copy rails_init_script
+  copy: src=rails_init_script dest=/etc/init.d/rails mode=0755
+
+- name: start rails deamon
+  systemd:
+    name: rails
+    state: started
+    enabled: yes

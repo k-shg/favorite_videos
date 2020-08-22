@@ -1,0 +1,62 @@
+#!/bin/bash
+# chkconfig: 2345 82 55
+
+NAME=puma
+USER=root
+APP_NAME=app
+APP_DIR=/var/www/$APP_NAME
+TMP_DIR=$APP_DIR/tmp
+PID_DIR=$TMP_DIR/pids
+PID_FILE=$PID_DIR/puma.pid
+RAILS_BIN=/usr/local/rbenv/shims/rails
+HOME=/home/$USER
+
+start() {
+  cd $APP_DIR;
+  echo "--------------------------------"
+  echo "Starting puma init script."
+  echo
+  echo "---init script config parameters---"
+  echo "USER= $USER"
+  echo "APP_NAME= $APP_NAME"
+  echo "APP_DIR= $APP_DIR"
+  echo "TMP_DIR= $TMP_DIR"
+  echo "PID_FILE= $PID_FILE"
+  echo
+  echo "---context information---"
+  echo "pwd=" `pwd`
+  echo
+  echo "---start the service.---"
+
+  sh -c "$RAILS_BIN s -e production"
+  echo
+  echo "--------------------------------"
+
+}
+
+stop() {
+  echo -n "Stopping puma"
+  kill -s SIGTERM `cat $PID_FILE`
+}
+
+restart() {
+  stop
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  *)
+    N=/etc/init.d/$NAME
+    echo "Usage: $N {start|stop|restart}" >&2
+    exit 1
+    ;;
+esac

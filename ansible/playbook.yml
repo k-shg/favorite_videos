@@ -9,3 +9,4 @@
     - ruby
     - nodejs
     - cron
+    - daemon
