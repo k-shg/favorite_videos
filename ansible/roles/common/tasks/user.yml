@@ -23,11 +23,3 @@
     line: "{{ item }} ALL=(ALL) NOPASSWD: ALL"
   loop:
     - ansibleman
-
-- cron:
-    name: set cron for updating ssl
-    minute: "0"
-    hour: "4"
-    day: "1"
-    job: "/usr/bin/certbot renew && systemctl restart nginx"
-    state: present
