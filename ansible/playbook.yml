@@ -9,4 +9,4 @@
     - ruby
     - nodejs
     - cron
-    - daemon
+    - systemd
