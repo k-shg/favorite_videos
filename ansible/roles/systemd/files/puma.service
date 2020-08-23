@@ -1,0 +1,13 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/app/
+Environment=RAILS_ENV=production
+ExecStart=/usr/local/rbenv/shims/bundle exec puma
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

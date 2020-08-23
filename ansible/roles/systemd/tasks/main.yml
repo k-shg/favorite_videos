@@ -1,0 +1,8 @@
+- name: copy puma.service
+  copy: src=puma.service dest=/usr/lib/systemd/system/puma.service mode=755
+
+- name: start puma deamon
+  systemd:
+    name: puma
+    state: started
+    enabled: yes

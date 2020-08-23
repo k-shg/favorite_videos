@@ -19,3 +19,9 @@
       - libxml2-devel
       - libxslt-devel
       - sqlite-devel
+      - ImageMagick
+      - ImageMagick-devel
+
+- name: set timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
