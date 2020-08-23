@@ -1,8 +1,8 @@
-- name: copy rails_init_script
-  copy: src=rails_init_script dest=/etc/init.d/rails mode=0755
+- name: copy puma.service
+  copy: src=puma.service dest=/usr/lib/systemd/system/puma.service mode=755
 
-- name: start rails deamon
+- name: start puma deamon
   systemd:
-    name: rails
+    name: puma
     state: started
     enabled: yes
