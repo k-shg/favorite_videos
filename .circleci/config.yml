@@ -1,0 +1,20 @@
+
+version: 2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "ba:33:d6:d1:7f:f0:07:64:ea:cd:1c:e2:68:20:54:08"
+      - run: ssh ${USER_NAME}@${HOST_NAME} "cd /var/www/app && git pull"
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
