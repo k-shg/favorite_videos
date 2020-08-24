@@ -1,4 +1,3 @@
-
 version: 2
 jobs:
   deploy:
@@ -7,8 +6,8 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "ba:33:d6:d1:7f:f0:07:64:ea:cd:1c:e2:68:20:54:08"
-      - run: ssh ${USER_NAME}@${HOST_NAME} "cd /var/www/app && git pull"
+            - "24:43:f9:ad:3d:b1:7a:5f:ef:ca:df:a3:f2:4b:7a:29"
+      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/app && git pull'
 
 workflows:
   version: 2
