@@ -7,7 +7,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "24:43:f9:ad:3d:b1:7a:5f:ef:ca:df:a3:f2:4b:7a:29"
-      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/app && git pull'
+      - run: ssh -p ${SSH_PORT} ${USER_NAME}@${HOST_NAME} 'cd /var/www/app && git pull'
 
 workflows:
   version: 2
