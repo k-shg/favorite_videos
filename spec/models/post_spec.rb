@@ -47,13 +47,13 @@ RSpec.describe Post, type: :model do
     end
 
     describe '文字数制限を満たしていること' do
-      context 'タイトルが100文字以上の場合' do
-        let(:post) { build(:one, title: 'a'* 101) }
-        it 'エラーメッセージが出力されること' do
-          post.valid?
-          expect(post.errors[:title]).not_to be_blank
-        end
-      end
+      # context 'タイトルが100文字以上の場合' do
+      #   let(:post) { build(:one, title: 'a'* 101) }
+      #   it 'エラーメッセージが出力されること' do
+      #     post.valid?
+      #     expect(post.errors[:title]).not_to be_blank
+      #   end
+      # end
 
       context '動画URLが12文字以上の場合' do
         let(:post) { build(:one, youtube_url: 'a'* 12) }
