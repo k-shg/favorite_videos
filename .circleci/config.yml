@@ -21,6 +21,13 @@ jobs:
     working_directory: ~/app
 
     steps:
+      - run:
+          name: setup remote_docker in localhost
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+              sudo chown root /usr/bin/docker
+              sudo chmod u+s /usr/bin/docker
+            fi
       - setup_remote_docker
       - checkout
       - run:
@@ -76,6 +83,13 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - run:
+          name: debug for test at localhost
+          command: |
+            if [[ $CIRCLE_SHELL_ENV =~ "localbuild" ]]; then
+               sleep 600
+            fi
 
   deploy:
     machine:
