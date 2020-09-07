@@ -32,7 +32,8 @@ https://favorite-videos.xyz/
 - JavaScript (Jquery)
 ### バックエンド  
 - Ruby (2.7.1)  
-- Rails (5.2.4)  
+- Rails (5.2.4)
+- RSpec (3.9)
 ### サーバー  
 - Puma (3.12.6 )  
 - Nginx
@@ -42,11 +43,11 @@ https://favorite-videos.xyz/
 - Docker/docker-compose
 - Supervisor
 - CircleCI (CI/CD)
-- RSpec
 - AWS(Route53, VPC, EC2, S3, IAM)  
 - Terraform
 - Ansible
-
+### インフラ構成図
+<img width="1440" alt="スクリーンショット 2020-07-06 16 18 33" src="https://user-images.githubusercontent.com/21212701/92387874-44f87500-f151-11ea-8a50-bd2ebd41c948.png">
 
 ## :computer: 制作背景
 個人的にYoutubeが大好きで、心に残ったお気に入りの動画を共有したいという気持ちがありました。「レビュー形式で評価の高い動画を見つけられる」利便性を図りたく作成しました。
