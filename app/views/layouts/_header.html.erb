@@ -2,12 +2,9 @@
   <div class="site-width">
     <div class="header__container">
       <div class="header__left">
-        <div class="header__title__sub">
-          好きな動画が見つかるサービス
-        </div>
-        <div class="header__title">
-          <%= link_to "Favorite Videos", root_path, { class: "header__link"} %>
-        </div>
+          <%= link_to root_path, { class: "header__img header__link"} do  %>
+              <%= image_tag "/assets/logo.jpg", size: '200x50' %>
+          <% end %>
       </div>
       <div class="header__right">
         <nav id="nav-top" class="nav">

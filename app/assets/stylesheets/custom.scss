@@ -60,6 +60,9 @@ $gray-lighter: gray;
         font-size: 13px;
       }
     }
+    &__img {
+      line-height: 108px;
+    }
     &__link {
       font-size: 25px;
       color: black;
@@ -132,7 +135,7 @@ $gray-lighter: gray;
       font-size: 12px;
       transition: .6s;
       padding-left: 7px;
-      
+
       &:hover {
         text-decoration: none;
         background-color: skyblue;
